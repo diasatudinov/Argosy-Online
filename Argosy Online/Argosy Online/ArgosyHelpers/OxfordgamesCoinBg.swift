@@ -4,7 +4,7 @@ struct OxfordgamesCoinBg: View {
     @StateObject var user = OxfordgamesUser.shared
     var body: some View {
         ZStack {
-            Image(.coinsViewBgOxfordgames)
+            Image(.coinsBgArgosy)
                 .resizable()
                 .scaledToFit()
             
@@ -12,6 +12,7 @@ struct OxfordgamesCoinBg: View {
                 .font(.system(size: OxfordgamesDeviceManager.shared.deviceType == .pad ? 48:24, weight: .black))
                 .foregroundStyle(.white)
                 .textCase(.uppercase)
+                .offset(x: 20)
             
             
             
