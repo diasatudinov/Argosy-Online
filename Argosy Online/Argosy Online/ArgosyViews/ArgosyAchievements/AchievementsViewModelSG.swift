@@ -1,12 +1,21 @@
+//
+//  AchievementsViewModelSG.swift
+//  Argosy Online
+//
+//  Created by Dias Atudinov on 15.05.2025.
+//
+
+
 import SwiftUI
 
 class AchievementsViewModelSG: ObservableObject {
     
     @Published var achievements: [AchievementSG] = [
-        AchievementSG(image: "achi1IconSG", achievedCount: 0, achievedMaxCount: 1, isAchieved: false),
-        AchievementSG(image: "achi2IconSG", achievedCount: 0, achievedMaxCount: 10, isAchieved: false),
-        AchievementSG(image: "achi3IconSG", achievedCount: 0, achievedMaxCount: 1, isAchieved: false),
-        AchievementSG(image: "achi4IconSG", achievedCount: 0, achievedMaxCount: 5, isAchieved: false)
+        AchievementSG(image: "achi1IconArgosy", achievedCount: 0, achievedMaxCount: 1, isAchieved: false),
+        AchievementSG(image: "achi2IconArgosy", achievedCount: 0, achievedMaxCount: 1, isAchieved: false),
+        AchievementSG(image: "achi3IconArgosy", achievedCount: 0, achievedMaxCount: 1, isAchieved: false),
+        AchievementSG(image: "achi4IconArgosy", achievedCount: 0, achievedMaxCount: 1, isAchieved: false),
+        AchievementSG(image: "achi5IconArgosy", achievedCount: 0, achievedMaxCount: 1, isAchieved: false)
 
     ] {
         didSet {
