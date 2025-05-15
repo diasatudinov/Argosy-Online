@@ -7,19 +7,15 @@ struct OxfordgamesSettingsView: View {
     var body: some View {
         ZStack {
             
-            ZStack {
-                Image(.settingsBgOxfordgames)
-                    .resizable()
-                    .scaledToFit()
-                VStack(spacing: 10) {
-                    
-                    
-                    
-                    VStack {
-                        Image(.soundTextOxfordgames)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 60:30)
+            VStack {
+                
+                
+                
+                ZStack {
+                    Image(.settingsBgArgosy)
+                        .resizable()
+                        .scaledToFit()
+                    HStack(spacing: 10) {
                         
                         Button {
                             withAnimation {
@@ -27,31 +23,31 @@ struct OxfordgamesSettingsView: View {
                             }
                         } label: {
                             
-                            Image(settingsVM.soundEnabled ? .onOxfordgames:.offOxfordgames)
+                            Image(settingsVM.soundEnabled ? .soundOnArgosy:.soundOffArgosy)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 80:40)
+                                .frame(width: OxfordgamesDeviceManager.shared.deviceType == .pad ? 200:100, height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 140:70)
                         }
-                    }
-                    
-                    VStack {
-                        Image(.languageTextOxfordgames)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 60:30)
                         
                         
-                        Image(.enImageOxfordgames)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 64:32)
+                        Button {
+                            withAnimation {
+                                settingsVM.musicEnabled.toggle()
+                            }
+                        } label: {
+                            
+                            Image(settingsVM.musicEnabled ? .musicOnArgosy:.musicOffArgosy)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: OxfordgamesDeviceManager.shared.deviceType == .pad ? 200:100,height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 140:70)
+                        }
+                        
+                        
                     }
                     
-                }
-                
-                
-            }.frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 700:366)
-            
+                    
+                }.frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 342:171)
+            }
             VStack {
                 HStack {
                     HStack(alignment: .top) {
@@ -59,7 +55,7 @@ struct OxfordgamesSettingsView: View {
                             presentationMode.wrappedValue.dismiss()
                             
                         } label: {
-                            Image(.backIconOxfordgames)
+                            Image(.backIconArgosy)
                                 .resizable()
                                 .scaledToFit()
                                 .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 100:50)
@@ -68,12 +64,17 @@ struct OxfordgamesSettingsView: View {
                        
                         OxfordgamesCoinBg()
                     }.padding([.horizontal, .top])
-                }
+                }.padding(.bottom, 40)
+                
+                Image(.settingsTextArgosy)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 210:105)
                 Spacer()
             }
         }.background(
             ZStack {
-                Image(.appBgOxfordgames)
+                Image(.appBgArgosy)
                     .resizable()
                     .edgesIgnoringSafeArea(.all)
                     .scaledToFill()
