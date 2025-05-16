@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "restartBtnArgosy.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
