@@ -4,7 +4,7 @@ import AVFoundation
 struct CoupleGameView: View {
     @Environment(\.presentationMode) var presentationMode
 
-    @StateObject var user = SGUser.shared
+    @StateObject var user = OxfordgamesUser.shared
     @State private var audioPlayer: AVAudioPlayer?
     
     @State private var cards: [Card] = []
@@ -13,7 +13,7 @@ struct CoupleGameView: View {
     @State private var gameEnded: Bool = false
     @State private var isWin: Bool = false
     @State private var pauseShow: Bool = false
-    private let cardTypes = ["cardFace1SG", "cardFace2SG", "cardFace3SG", "cardFace4SG", "cardFace5SG", "cardFace6SG"]
+    private let cardTypes = ["cardFace1Argosy", "cardFace2Argosy", "cardFace3Argosy", "cardFace4Argosy", "cardFace5Argosy", "cardFace6Argosy"]
     private let gridSize = 4
     
     @State private var counter: Int = 0
@@ -30,46 +30,55 @@ struct CoupleGameView: View {
                             presentationMode.wrappedValue.dismiss()
                             
                         } label: {
-                            Image(.homeIconSG)
+                            Image(.backIconArgosy)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: SGDeviceManager.shared.deviceType == .pad ? 160:80)
+                                .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 100:50)
                         }
                         
                         Spacer()
-                    }
+                        
+                        OxfordgamesCoinBg()
+                    }.padding(.horizontal)
                     
-                    VStack(spacing: SGDeviceManager.shared.deviceType == .pad ? -40:-20) {
-                        Image(.findCoupleText)
+                    VStack(spacing: OxfordgamesDeviceManager.shared.deviceType == .pad ? -40:-20) {
+                        Image(.findCoupleTextArgosy)
                             .resizable()
                             .scaledToFit()
-                            .frame(height: SGDeviceManager.shared.deviceType == .pad ? 240:120)
+                            .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 210:105)
                         
                         ZStack {
-                            Image(.coupleTimerBg)
+                            Image(.coupleTimerBgArgosy)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: SGDeviceManager.shared.deviceType == .pad ? 140:70)
+                                .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 120:60)
                             
                             Text("\(timeLeft)")
-                                .font(.system(size: SGDeviceManager.shared.deviceType == .pad ? 40:20, weight: .bold))
-                                .foregroundStyle(.yellow)
+                                .font(.system(size: OxfordgamesDeviceManager.shared.deviceType == .pad ? 40:20, weight: .bold))
+                                .foregroundStyle(.white)
                         }
                     }
-                    
-                    LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 3), spacing: 20) {
-                        ForEach(cards) { card in
-                            CardView(card: card)
-                                .onTapGesture {
-                                    flipCard(card)
-                                   
-                                }
-                                .opacity(card.isMatched ? 0.5 : 1.0)
-                        }
+                    Spacer()
+                    ZStack {
+                        Image(.findCoupleGameBgArgosy)
+                            .resizable()
+                            .scaledToFit()
                         
-                    }
-                    .frame(width: SGDeviceManager.shared.deviceType == .pad ? 500:350)
-                   
+                        LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 3), spacing: 0) {
+                            ForEach(cards) { card in
+                                CardView(card: card)
+                                    .onTapGesture {
+                                        flipCard(card)
+                                        
+                                    }
+                                    .opacity(card.isMatched ? 0.5 : 1.0)
+                            }
+                            
+                        }
+                        .frame(width: OxfordgamesDeviceManager.shared.deviceType == .pad ? 500:332)
+                    }.frame(width: OxfordgamesDeviceManager.shared.deviceType == .pad ? 600:382)
+                    
+                    Spacer()
                 }
                 .onAppear {
                     setupGame()
@@ -78,41 +87,37 @@ struct CoupleGameView: View {
             if gameEnded {
                 if isWin {
                     ZStack {
-                        Image(.coupleGameBgSG)
-                            .resizable()
-                        VStack(spacing: -40) {
-                            Image(.winTextSG)
+                        VStack(spacing: OxfordgamesDeviceManager.shared.deviceType == .pad ? -60:-30) {
+                            Image(.winTextArgosy)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: SGDeviceManager.shared.deviceType == .pad ? 800:400)
+                                .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 500:250)
                             
                             Button {
                                 setupGame()
                             } label: {
-                                Image(.nextButtonSG)
+                                Image(.getTextArgosy)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: SGDeviceManager.shared.deviceType == .pad ? 200:100)
+                                    .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 120:60)
                             }
                         }
                     }
                 } else {
                     ZStack {
-                        Image(.coupleGameBgSG)
-                            .resizable()
-                        VStack(spacing: SGDeviceManager.shared.deviceType == .pad ? -80:-40) {
-                            Image(.loseTextSG)
+                        VStack(spacing: OxfordgamesDeviceManager.shared.deviceType == .pad ? -60:-30) {
+                            Image(.loseTextArgosy)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: SGDeviceManager.shared.deviceType == .pad ? 360:180)
+                                .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 500:250)
                             
                             Button {
                                 setupGame()
                             } label: {
-                                Image(.tryAgainIconSG)
+                                Image(.restartBtnArgosy)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: SGDeviceManager.shared.deviceType == .pad ? 300:150)
+                                    .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 120:60)
                             }
                         }
                     }
@@ -135,7 +140,7 @@ struct CoupleGameView: View {
 //            startTimer()
 //        }
         .background(
-            Image(.coupleGameBgSG)
+            Image(.appBgArgosy)
                 .resizable()
                 .edgesIgnoringSafeArea(.all)
                 .scaledToFill()
@@ -257,20 +262,17 @@ struct CardView: View {
                 Image(card.type)
                     .resizable()
                     .scaledToFit()
-                    .frame(height: SGDeviceManager.shared.deviceType == .pad ? 200:120)
+                    .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 210:105)
             } else {
-                Image(.cardBackSG)
+                Image(.cardBackArgosy)
                     .resizable()
                     .scaledToFit()
-                    .frame(height: SGDeviceManager.shared.deviceType == .pad ? 200:120)
+                    .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 210:105)
             }
         }
     }
 }
 
-#Preview {
-    CardView(card: Card(type: "cardFace1SG"))
-}
 
 struct Card: Identifiable {
     let id = UUID()
