@@ -22,6 +22,15 @@ struct OxfordgamesMazeGameView: View {
     
     var body: some View {
         ZStack {
+            VStack(spacing: 5) {
+                Image(.guessTheNumTextArgosy)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 210:105)
+                Image(.guessNumGameBgArgosy)
+                    .resizable()
+                    .scaledToFit()
+            }
             OxfordgamesMazeViewContainer(scene: gameScene, isWin: $isWin)
                 
             
@@ -32,21 +41,12 @@ struct OxfordgamesMazeGameView: View {
                             presentationMode.wrappedValue.dismiss()
                             
                         } label: {
-                            Image(.backIconOxfordgames)
+                            Image(.backIconArgosy)
                                 .resizable()
                                 .scaledToFit()
                                 .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 100:50)
                         }
                         
-                        Button {
-                            gameScene.restartGame()
-                            isWin = false
-                        } label: {
-                            Image(.restartBtnOxfordgames)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 100:50)
-                        }
                         Spacer()
                         
                         OxfordgamesCoinBg()
@@ -61,7 +61,7 @@ struct OxfordgamesMazeGameView: View {
                         gameScene.moveUp()
                         
                     } label: {
-                        Image(.controlArrowOxfordgames)
+                        Image(.controlArrowArgosy)
                             .resizable()
                             .scaledToFit()
                             .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 100:50)
@@ -70,7 +70,7 @@ struct OxfordgamesMazeGameView: View {
                         Button {
                             gameScene.moveLeft()
                         } label: {
-                            Image(.controlArrowOxfordgames)
+                            Image(.controlArrowArgosy)
                                 .resizable()
                                 .scaledToFit()
                                 .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 100:50)
@@ -81,7 +81,7 @@ struct OxfordgamesMazeGameView: View {
                         Button {
                             gameScene.moveRight()
                         } label: {
-                            Image(.controlArrowOxfordgames)
+                            Image(.controlArrowArgosy)
                                 .resizable()
                                 .scaledToFit()
                                 .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 100:50)
@@ -92,52 +92,41 @@ struct OxfordgamesMazeGameView: View {
                     Button {
                         gameScene.moveDown()
                     } label: {
-                        Image(.controlArrowOxfordgames)
+                        Image(.controlArrowArgosy)
                             .resizable()
                             .scaledToFit()
                             .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 100:50)
                             .scaleEffect(x: 1, y: -1)
                     }
-                }
+                }.padding(.bottom, 50)
+                
                 
             }
             
             if isWin {
                 ZStack {
-                    Image(.winBgOxfordgames)
-                        .resizable()
-                        .scaledToFit()
-                    
-                    VStack {
-                        
-                        Spacer()
+                    VStack(spacing: OxfordgamesDeviceManager.shared.deviceType == .pad ? -60:-30) {
+                        Image(.winTextArgosy)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 500:250)
                         
                         Button {
                             gameScene.restartGame()
                             isWin = false
                         } label: {
-                            Image(.retryBtnOxfordgames)
+                            Image(.getTextArgosy)
                                 .resizable()
                                 .scaledToFit()
                                 .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 120:60)
                         }
-                        
-                        Button {
-                            presentationMode.wrappedValue.dismiss()
-                        } label: {
-                            Image(.menuBtnOxfordgames)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 120:60)
-                        }
-                        
-                    }.padding(.bottom, OxfordgamesDeviceManager.shared.deviceType == .pad ? 100 : 50)
-                }.frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 700:350)
+                    }
+                }
             }
             
         }.background(
             ZStack {
-                Image(.appBgOxfordgames)
+                Image(.appBgArgosy)
                     .resizable()
                     .edgesIgnoringSafeArea(.all)
                     .scaledToFill()
