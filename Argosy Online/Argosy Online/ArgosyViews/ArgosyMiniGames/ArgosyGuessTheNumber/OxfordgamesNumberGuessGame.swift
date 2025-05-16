@@ -2,7 +2,6 @@ import SwiftUI
 
 struct OxfordgamesNumberGuessGame: View {
     @Environment(\.presentationMode) var presentationMode
-    
     @State private var target = Int.random(in: 100...999)
     @State private var guessDigits: [String] = []
     @State private var feedback: String = ""
@@ -13,167 +12,127 @@ struct OxfordgamesNumberGuessGame: View {
                               7, 8, 9,
                               0]
     
-    
-    var body: some View {
-        ZStack {
-            VStack(spacing: OxfordgamesDeviceManager.shared.deviceType == .pad ? 40:20) {
-                // Top bar
-                HStack(alignment: .top) {
-                    Button {
-                        presentationMode.wrappedValue.dismiss()
-                        
-                    } label: {
-                        Image(.backIconOxfordgames)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 100:50)
-                    }
-                    
-                    Button {
-                        
-                        resetGame()
-                    } label: {
-                        Image(.restartBtnOxfordgames)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 100:50)
-                    }
-                    Spacer()
-                    
-                    OxfordgamesCoinBg()
-                }.padding([.horizontal, .top])
-                
-                
-                // Input slots
-                ZStack {
-                    
-                    Image(.guessNumBgOxfordgames)
-                        .resizable()
-                        .scaledToFit()
-                    
-                    Image(.numberBgMinigame)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 130:65)
-                    
-                    HStack(spacing: 8) {
-                        ForEach(0..<3) { idx in
-                            ZStack {
-                                
-                                Text( idx < guessDigits.count ? guessDigits[idx] : "" )
-                                    .font(.system(size: 36, weight: .bold))
-                                    .foregroundColor(.white)
-                            }.frame(width: OxfordgamesDeviceManager.shared.deviceType == .pad ? 150:50, height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 150:100)
-                        }
-                    }
-                    .padding(.vertical)
-                }.frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 700:350)
-                
-                
-                
-                
-                Spacer()
-            }
-            
-            VStack {
-                Spacer()
-                // Number Pad
-                let columns = Array(repeating: GridItem(.flexible(), spacing: 0), count: 3)
-                LazyVGrid(columns: columns, spacing: OxfordgamesDeviceManager.shared.deviceType == .pad ? 24:12) {
-                    ForEach(padNumbers, id: \ .self) { num in
-                        Button(action: { numberPressed(num) }) {
-                            ZStack {
-                                
-                                Text("\(num)")
-                                    .font(.system(size: OxfordgamesDeviceManager.shared.deviceType == .pad ? 96:48, weight: .bold))
-                                    .foregroundColor(.white)
-                            }.frame(width: OxfordgamesDeviceManager.shared.deviceType == .pad ? 150:100, height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 150:100)
-                                .background {
-                                    Rectangle()
-                                        .foregroundStyle(.bgGray)
-                                        .overlay {
-                                            RoundedRectangle(cornerRadius: 10)
-                                                .stroke(Color.bgYellow, lineWidth: 5)
-                                            
-                                        }
-                                    
-                                }
-                                .cornerRadius(10)
+
+        var body: some View {
+            ZStack {
+                VStack(spacing: OxfordgamesDeviceManager.shared.deviceType == .pad ? 40:20) {
+                    HStack(alignment: .top) {
+                        Button {
+                            presentationMode.wrappedValue.dismiss()
                             
-                        }
-                        .disabled(guessDigits.count >= 3)
-                    }
-                }.frame(width: OxfordgamesDeviceManager.shared.deviceType == .pad ? 500:350)
-                    .padding(.horizontal)
-            }
-            
-            
-            
-            if !feedback.isEmpty {
-                Text(feedback)
-                    .font(.title2)
-                    .foregroundColor(.yellow)
-                    .padding(.bottom, 10)
-                    .shadow(radius: 2)
-                
-                ZStack {
-                    
-                    if Int(guessDigits.joined()) ?? 0 < target {
-                        Image(.guessMoreOxfordgames)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 500:250)
-                    } else if Int(guessDigits.joined()) ?? 0 > target{
-                        Image(.guessLessOxfordgames)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 500:250)
-                    } else {
-                        
-                        ZStack {
-                            Image(.winBgOxfordgames)
+                        } label: {
+                            Image(.backIconArgosy)
                                 .resizable()
                                 .scaledToFit()
-                            
-                            VStack {
-                                
-                                Spacer()
-                                
-                                Button {
-                                    resetGame()
-                                } label: {
-                                    Image(.retryBtnOxfordgames)
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 120:60)
-                                }
-                                
-                                Button {
-                                    presentationMode.wrappedValue.dismiss()
-                                } label: {
-                                    Image(.menuBtnOxfordgames)
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 120:60)
-                                }
-                                
-                            }.padding(.bottom, OxfordgamesDeviceManager.shared.deviceType == .pad ? 100 : 50)
-                        }.frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 700:350)
+                                .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 100:50)
+                        }
+                        Spacer()
                         
+                        OxfordgamesCoinBg()
+                    }.padding([.horizontal, .top])
+
+                    Image(.guessTheNumTextArgosy)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 210:105)
+                    
+                    ZStack {
+                        
+                        Image(.guessNumGameBgArgosy)
+                            .resizable()
+                            .scaledToFit()
+                        VStack {
+                            
+                            HStack(spacing: 16) {
+                                ForEach(0..<3) { idx in
+                                    ZStack {
+                                        Image(.numBgArgosy)
+                                            .resizable()
+                                            .scaledToFit()
+                                        
+                                        Text( idx < guessDigits.count ? guessDigits[idx] : "" )
+                                            .font(.system(size: 36, weight: .bold))
+                                            .foregroundColor(.white)
+                                    }.frame(width: OxfordgamesDeviceManager.shared.deviceType == .pad ? 150:100, height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 150:100)
+                                }
+                            }
+                            .padding(.vertical)
+                            
+                            
+                            let columns = Array(repeating: GridItem(.flexible(), spacing: 0), count: 3)
+                            LazyVGrid(columns: columns, spacing: OxfordgamesDeviceManager.shared.deviceType == .pad ? 24:12) {
+                                ForEach(padNumbers, id: \ .self) { num in
+                                    Button(action: { numberPressed(num) }) {
+                                        ZStack {
+                                            Image(.keyBoardBtnArgosy)
+                                                .resizable()
+                                                .scaledToFit()
+                                            Text("\(num)")
+                                                .font(.system(size: OxfordgamesDeviceManager.shared.deviceType == .pad ? 72:36, weight: .bold))
+                                                .foregroundColor(.white)
+                                        }.frame(width: OxfordgamesDeviceManager.shared.deviceType == .pad ? 144:72, height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 144:72)
+                                    }
+                                    .disabled(guessDigits.count >= 3)
+                                }
+                            }.frame(width: OxfordgamesDeviceManager.shared.deviceType == .pad ? 480:240)
+                                .padding(.horizontal)
+                        }
                     }
+                    
+                    Spacer()
                 }
                 
-            }
-        }.background(
-            ZStack {
-                Image(.appBgOxfordgames)
-                    .resizable()
-                    .edgesIgnoringSafeArea(.all)
-                    .scaledToFill()
-            }
-        )
-    }
-    
+                if !feedback.isEmpty {
+                    Text(feedback)
+                        .font(.title2)
+                        .foregroundColor(.yellow)
+                        .padding(.bottom, 10)
+                        .shadow(radius: 2)
+                    
+                    ZStack {
+                        
+                        if Int(guessDigits.joined()) ?? 0 < target {
+                            Image(.guessHigherArgosy)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 500:250)
+                        } else if Int(guessDigits.joined()) ?? 0 > target{
+                            Image(.guessLowerArgosy)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 500:250)
+                        } else {
+                            ZStack {
+                                VStack(spacing: OxfordgamesDeviceManager.shared.deviceType == .pad ? -60:-30) {
+                                    Image(.winTextArgosy)
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 500:250)
+                                    
+                                    Button {
+                                        resetGame()
+                                    } label: {
+                                        Image(.getTextArgosy)
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 120:60)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    
+                }
+            }.background(
+                ZStack {
+                    Image(.appBgArgosy)
+                        .resizable()
+                        .edgesIgnoringSafeArea(.all)
+                        .scaledToFill()
+                }
+            )
+        }
+
     // MARK: - Actions
     private func numberPressed(_ num: Int) {
         guard guessDigits.count < 3 else { return }
@@ -182,7 +141,7 @@ struct OxfordgamesNumberGuessGame: View {
             evaluateGuess()
         }
     }
-    
+
     private func evaluateGuess() {
         let guess = Int(guessDigits.joined()) ?? 0
         attempts += 1
@@ -192,7 +151,7 @@ struct OxfordgamesNumberGuessGame: View {
             feedback = "Too high!"
         } else {
             feedback = "You got it in \(attempts) tries!"
-            OxfordgamesUser.shared.updateUserMoney(for: 20)
+            OxfordgamesUser.shared.updateUserMoney(for: 100)
         }
         // Only reset if correct to allow victory state
         if feedback.starts(with: "You got it") {
@@ -206,7 +165,7 @@ struct OxfordgamesNumberGuessGame: View {
             }
         }
     }
-    
+
     private func resetGame() {
         target = Int.random(in: 100...999)
         guessDigits = []
