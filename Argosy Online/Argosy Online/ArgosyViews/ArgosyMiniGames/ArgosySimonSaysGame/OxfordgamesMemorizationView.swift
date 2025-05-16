@@ -1,10 +1,18 @@
+//
+//  OxfordgamesMemorizationView.swift
+//  Argosy Online
+//
+//  Created by Dias Atudinov on 16.05.2025.
+//
+
+
 import SwiftUI
 
 struct OxfordgamesMemorizationView: View {
     @StateObject var user = OxfordgamesUser.shared
     @Environment(\.presentationMode) var presentationMode
     
-    let cardImages = ["card1Oxfordgames", "card2Oxfordgames", "card3Oxfordgames", "card4Oxfordgames", "card5Oxfordgames", "card6Oxfordgames", "card7Oxfordgames", "card8Oxfordgames"]
+    let cardImages = ["cardFace1Argosy", "cardFace2Argosy", "cardFace3Argosy", "cardFace4Argosy", "cardFace5Argosy", "cardFace6Argosy"]
     let sequenceLength = 3
     
     @State private var sequence: [Int] = []
@@ -30,21 +38,12 @@ struct OxfordgamesMemorizationView: View {
                                     presentationMode.wrappedValue.dismiss()
                                     
                                 } label: {
-                                    Image(.backIconOxfordgames)
+                                    Image(.backIconArgosy)
                                         .resizable()
                                         .scaledToFit()
                                         .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 100:50)
                                 }
                                 
-                                Button {
-                                    startGame()
-                                    
-                                } label: {
-                                    Image(.restartBtnOxfordgames)
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 100:50)
-                                }
                             }
                             Spacer()
                             
@@ -52,6 +51,11 @@ struct OxfordgamesMemorizationView: View {
                         }.padding([.horizontal, .top])
                     }
                 }
+                
+                Image(.simonSaysGameTextArgosy)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 210:105)
                 
                 Spacer()
                 
@@ -65,7 +69,7 @@ struct OxfordgamesMemorizationView: View {
                     }
                 } else {
                     // Grid for user interaction
-                    LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 12), count: 4), spacing: 12) {
+                    LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 12), count: 3), spacing: 12) {
                         ForEach(0..<cardImages.count, id: \.self) { index in
                             MemorizationCardView(imageName: cardImages[index])
                                 .onTapGesture {
@@ -85,69 +89,47 @@ struct OxfordgamesMemorizationView: View {
                 
                 if userInputIndex >= sequenceLength {
                     ZStack {
-                        Image(.winBgOxfordgames)
-                            .resizable()
-                            .scaledToFit()
-                        
-                        VStack {
-                            
-                            Spacer()
+                        VStack(spacing: OxfordgamesDeviceManager.shared.deviceType == .pad ? -60:-30) {
+                            Image(.winTextArgosy)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 500:250)
                             
                             Button {
                                 startGame()
                             } label: {
-                                Image(.retryBtnOxfordgames)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 120:60)
-                            }
-                            
-                            Button {
-                                presentationMode.wrappedValue.dismiss()
-                            } label: {
-                                Image(.menuBtnOxfordgames)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 120:60)
-                            }
-                            
-                        }.padding(.bottom, OxfordgamesDeviceManager.shared.deviceType == .pad ? 100 : 50)
-                    }.frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 700:350)
-                } else {
-                    ZStack {
-                        Image(.loseBgOxfordgames)
-                            .resizable()
-                            .scaledToFit()
-                        
-                        VStack {
-                            
-                            
-                            Button {
-                                startGame()
-                            } label: {
-                                Image(.retryBtnOxfordgames)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 120:60)
-                            }
-                            
-                            Button {
-                                presentationMode.wrappedValue.dismiss()
-                            } label: {
-                                Image(.menuBtnOxfordgames)
+                                Image(.getTextArgosy)
                                     .resizable()
                                     .scaledToFit()
                                     .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 120:60)
                             }
                         }
-                    }.frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 700:350)
+                    }
+                } else {
+                    ZStack {
+                        VStack(spacing: OxfordgamesDeviceManager.shared.deviceType == .pad ? -60:-30) {
+                            Image(.loseTextArgosy)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 500:250)
+                            
+                            Button {
+                                startGame()
+                            } label: {
+                                Image(.restartBtnArgosy)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 120:60)
+                            }
+                        }
+                    }
                 }
                 
             }
         }
         .background(
             ZStack {
-                Image(.appBgOxfordgames)
+                Image(.appBgArgosy)
                     .resizable()
                     .edgesIgnoringSafeArea(.all)
                     .scaledToFill()
