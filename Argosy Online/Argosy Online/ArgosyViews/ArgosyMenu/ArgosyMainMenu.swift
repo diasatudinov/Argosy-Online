@@ -8,7 +8,7 @@ struct ArgosyMainMenu: View {
     @State private var showMiniGames = false
     @State private var showSettings = false
     
-    //    @StateObject var achievementVM = OxfordgamesAchievementsViewModel()
+    @StateObject var achievementVM = AchievementsViewModelSG()
     @StateObject var settingsVM = OxfordgamesSettingsViewModel()
     //    @StateObject var shopVM = OxfordgamesStoreViewModel()
     
@@ -95,7 +95,7 @@ struct ArgosyMainMenu: View {
             //            OxfordgamesMiniGamesView()
         }
         .fullScreenCover(isPresented: $showAchievement) {
-            //            OxfordgamesAchievementsView(viewModel: achievementVM)
+            AchievementsViewSG(viewModel: achievementVM)
         }
         .fullScreenCover(isPresented: $showShop) {
             //            OxfordgamesStoreView(viewModel: shopVM)

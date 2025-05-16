@@ -1,11 +1,3 @@
-//
-//  AchievementsViewModelSG.swift
-//  Argosy Online
-//
-//  Created by Dias Atudinov on 15.05.2025.
-//
-
-
 import SwiftUI
 
 class AchievementsViewModelSG: ObservableObject {
