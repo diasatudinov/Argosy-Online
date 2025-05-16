@@ -102,7 +102,7 @@ struct ArgosyChooseMiniGame: View {
             OxfordgamesMemorizationView()
         }
         .fullScreenCover(isPresented: $game4) {
-          //  OxfordgamesMazeGameView()
+            OxfordgamesMazeGameView()
         }
     }
 }

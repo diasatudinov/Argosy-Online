@@ -10,7 +10,7 @@ struct ArgosyMainMenu: View {
     
     @StateObject var achievementVM = AchievementsViewModelSG()
     @StateObject var settingsVM = OxfordgamesSettingsViewModel()
-    //    @StateObject var shopVM = OxfordgamesStoreViewModel()
+    @StateObject var shopVM = StoreViewModelSG()
     
     var body: some View {
         
@@ -89,16 +89,16 @@ struct ArgosyMainMenu: View {
             }
         )
         .fullScreenCover(isPresented: $showGame) {
-            //            OxfordgamesChooseLevelView(shopVM: shopVM)
+//                        OxfordgamesChooseLevelView(shopVM: shopVM)
         }
         .fullScreenCover(isPresented: $showMiniGames) {
-            //            OxfordgamesMiniGamesView()
+            ArgosyChooseMiniGame()
         }
         .fullScreenCover(isPresented: $showAchievement) {
             AchievementsViewSG(viewModel: achievementVM)
         }
         .fullScreenCover(isPresented: $showShop) {
-            //            OxfordgamesStoreView(viewModel: shopVM)
+            ShopViewSG(viewModel: shopVM)
         }
         .fullScreenCover(isPresented: $showSettings) {
             OxfordgamesSettingsView(settingsVM: settingsVM)
