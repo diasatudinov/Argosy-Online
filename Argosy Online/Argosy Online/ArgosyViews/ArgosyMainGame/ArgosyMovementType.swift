@@ -8,14 +8,14 @@ enum ArgosyMovementType: Int {
     case uTurn = 3
 }
 
-struct OxfordgamesShipConfig {
+struct ArgosyShipConfig {
     let name: String
     let initialPosition: CGPoint
     let direction: CGVector
     let movement: ArgosyMovementType
 }
 
-class OxfordgamesGameScene: SKScene, SKPhysicsContactDelegate {
+class ArgosyGameScene: SKScene, SKPhysicsContactDelegate {
     var shopVM = ArgosyShopViewModel()
     var levelIndex: Int?
     private var lastTappedShip: SKSpriteNode?
@@ -37,126 +37,126 @@ class OxfordgamesGameScene: SKScene, SKPhysicsContactDelegate {
         let fieldHeight = h / 2
         let fieldCenterY = h / 2
         var roadConfigs: [(position: CGPoint, size: CGSize)] = []
-        var shipConfigs: [OxfordgamesShipConfig] = []
+        var shipConfigs: [ArgosyShipConfig] = []
         
         switch index {
         case 0:
             roadConfigs = [
-                (CGPoint(x: w/2, y: fieldCenterY), CGSize(width: w, height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 200:100)),
-                (CGPoint(x: w/2, y: fieldCenterY), CGSize(width: OxfordgamesDeviceManager.shared.deviceType == .pad ? 200:100, height: fieldHeight))
+                (CGPoint(x: w/2, y: fieldCenterY), CGSize(width: w, height: ArgosyDeviceManager.shared.deviceType == .pad ? 200:100)),
+                (CGPoint(x: w/2, y: fieldCenterY), CGSize(width: ArgosyDeviceManager.shared.deviceType == .pad ? 200:100, height: fieldHeight))
             ]
             shipConfigs = [
-                OxfordgamesShipConfig(name: "ship0", initialPosition: CGPoint(x: w/2, y: fieldCenterY + fieldHeight/2 - 50), direction: CGVector(dx: 0, dy: -1), movement: .straight),
-                OxfordgamesShipConfig(name: "ship1", initialPosition: CGPoint(x: w/2 - fieldHeight/2 + 50, y: fieldCenterY), direction: CGVector(dx: 1, dy: 0), movement: .turnLeft),
-                OxfordgamesShipConfig(name: "ship2", initialPosition: CGPoint(x: w/2, y: fieldCenterY - fieldHeight/2 + 50), direction: CGVector(dx: 0, dy: 1), movement: .turnRight),
-                OxfordgamesShipConfig(name: "ship3", initialPosition: CGPoint(x: w/2 + fieldHeight/2 - 80, y: fieldCenterY), direction: CGVector(dx: 1, dy: 0), movement: .straight)
+                ArgosyShipConfig(name: "ship0", initialPosition: CGPoint(x: w/2, y: fieldCenterY + fieldHeight/2 - 50), direction: CGVector(dx: 0, dy: -1), movement: .straight),
+                ArgosyShipConfig(name: "ship1", initialPosition: CGPoint(x: w/2 - fieldHeight/2 + 50, y: fieldCenterY), direction: CGVector(dx: 1, dy: 0), movement: .turnLeft),
+                ArgosyShipConfig(name: "ship2", initialPosition: CGPoint(x: w/2, y: fieldCenterY - fieldHeight/2 + 50), direction: CGVector(dx: 0, dy: 1), movement: .turnRight),
+                ArgosyShipConfig(name: "ship3", initialPosition: CGPoint(x: w/2 + fieldHeight/2 - 80, y: fieldCenterY), direction: CGVector(dx: 1, dy: 0), movement: .straight)
             ]
         case 1:
             roadConfigs = [
-                (CGPoint(x: w/2, y: fieldCenterY), CGSize(width: w, height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 200:100)),
-                (CGPoint(x: w/2, y: fieldCenterY), CGSize(width: OxfordgamesDeviceManager.shared.deviceType == .pad ? 200:100, height: fieldHeight))
+                (CGPoint(x: w/2, y: fieldCenterY), CGSize(width: w, height: ArgosyDeviceManager.shared.deviceType == .pad ? 200:100)),
+                (CGPoint(x: w/2, y: fieldCenterY), CGSize(width: ArgosyDeviceManager.shared.deviceType == .pad ? 200:100, height: fieldHeight))
             ]
             shipConfigs = [
-                OxfordgamesShipConfig(name: "ship0", initialPosition: CGPoint(x: w/2, y: fieldCenterY + fieldHeight/2 - 50), direction: CGVector(dx: 0, dy: 1), movement: .straight),
-                OxfordgamesShipConfig(name: "ship1", initialPosition: CGPoint(x: w/2 - fieldHeight/2 + 50, y: fieldCenterY), direction: CGVector(dx: 1, dy: 0), movement: .turnLeft),
-                OxfordgamesShipConfig(name: "ship2", initialPosition: CGPoint(x: w/2, y: fieldCenterY - fieldHeight/2 + 50), direction: CGVector(dx: 0, dy: 1), movement: .turnRight),
-                OxfordgamesShipConfig(name: "ship3", initialPosition: CGPoint(x: w/2 + fieldHeight/2 - 80, y: fieldCenterY), direction: CGVector(dx: -1, dy: 0), movement: .straight)
+                ArgosyShipConfig(name: "ship0", initialPosition: CGPoint(x: w/2, y: fieldCenterY + fieldHeight/2 - 50), direction: CGVector(dx: 0, dy: 1), movement: .straight),
+                ArgosyShipConfig(name: "ship1", initialPosition: CGPoint(x: w/2 - fieldHeight/2 + 50, y: fieldCenterY), direction: CGVector(dx: 1, dy: 0), movement: .turnLeft),
+                ArgosyShipConfig(name: "ship2", initialPosition: CGPoint(x: w/2, y: fieldCenterY - fieldHeight/2 + 50), direction: CGVector(dx: 0, dy: 1), movement: .turnRight),
+                ArgosyShipConfig(name: "ship3", initialPosition: CGPoint(x: w/2 + fieldHeight/2 - 80, y: fieldCenterY), direction: CGVector(dx: -1, dy: 0), movement: .straight)
             ]
             
         case 2:
             roadConfigs = [
-                (CGPoint(x: w/2, y: fieldCenterY), CGSize(width: w, height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 200:100)),
-                (CGPoint(x: w/2, y: fieldCenterY), CGSize(width: OxfordgamesDeviceManager.shared.deviceType == .pad ? 200:100, height: fieldHeight))
+                (CGPoint(x: w/2, y: fieldCenterY), CGSize(width: w, height: ArgosyDeviceManager.shared.deviceType == .pad ? 200:100)),
+                (CGPoint(x: w/2, y: fieldCenterY), CGSize(width: ArgosyDeviceManager.shared.deviceType == .pad ? 200:100, height: fieldHeight))
             ]
             shipConfigs = [
-                OxfordgamesShipConfig(name: "ship0", initialPosition: CGPoint(x: w/2, y: fieldCenterY + fieldHeight/2 - 50), direction: CGVector(dx: 0, dy: -1), movement: .turnLeft),
-                OxfordgamesShipConfig(name: "ship1", initialPosition: CGPoint(x: w/2 - fieldHeight/2 + 50, y: fieldCenterY), direction: CGVector(dx: 1, dy: 0), movement: .straight),
-                OxfordgamesShipConfig(name: "ship2", initialPosition: CGPoint(x: w/2, y: fieldCenterY - fieldHeight/2 + 50), direction: CGVector(dx: 0, dy: -1), movement: .straight),
-                OxfordgamesShipConfig(name: "ship3", initialPosition: CGPoint(x: w/2 + fieldHeight/2 - 80, y: fieldCenterY), direction: CGVector(dx: -1, dy: 0), movement: .turnLeft)
+                ArgosyShipConfig(name: "ship0", initialPosition: CGPoint(x: w/2, y: fieldCenterY + fieldHeight/2 - 50), direction: CGVector(dx: 0, dy: -1), movement: .turnLeft),
+                ArgosyShipConfig(name: "ship1", initialPosition: CGPoint(x: w/2 - fieldHeight/2 + 50, y: fieldCenterY), direction: CGVector(dx: 1, dy: 0), movement: .straight),
+                ArgosyShipConfig(name: "ship2", initialPosition: CGPoint(x: w/2, y: fieldCenterY - fieldHeight/2 + 50), direction: CGVector(dx: 0, dy: -1), movement: .straight),
+                ArgosyShipConfig(name: "ship3", initialPosition: CGPoint(x: w/2 + fieldHeight/2 - 80, y: fieldCenterY), direction: CGVector(dx: -1, dy: 0), movement: .turnLeft)
             ]
             
         case 3:
             roadConfigs = [
-                (CGPoint(x: w/2, y: fieldCenterY), CGSize(width: w, height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 200:100)),
-                (CGPoint(x: w/2, y: fieldCenterY), CGSize(width: OxfordgamesDeviceManager.shared.deviceType == .pad ? 200:100, height: fieldHeight))
+                (CGPoint(x: w/2, y: fieldCenterY), CGSize(width: w, height: ArgosyDeviceManager.shared.deviceType == .pad ? 200:100)),
+                (CGPoint(x: w/2, y: fieldCenterY), CGSize(width: ArgosyDeviceManager.shared.deviceType == .pad ? 200:100, height: fieldHeight))
             ]
             shipConfigs = [
-                OxfordgamesShipConfig(name: "ship0", initialPosition: CGPoint(x: w/2, y: fieldCenterY + fieldHeight/2 - 50), direction: CGVector(dx: 0, dy: -1), movement: .straight),
-                OxfordgamesShipConfig(name: "ship1", initialPosition: CGPoint(x: w/2 - fieldHeight/2 + 50, y: fieldCenterY), direction: CGVector(dx: 1, dy: 0), movement: .turnRight),
-                OxfordgamesShipConfig(name: "ship2", initialPosition: CGPoint(x: w/2, y: fieldCenterY - fieldHeight/2 + 50), direction: CGVector(dx: 0, dy: -1), movement: .straight),
-                OxfordgamesShipConfig(name: "ship3", initialPosition: CGPoint(x: w/2 + fieldHeight/2 - 80, y: fieldCenterY), direction: CGVector(dx: -1, dy: 0), movement: .turnRight)
+                ArgosyShipConfig(name: "ship0", initialPosition: CGPoint(x: w/2, y: fieldCenterY + fieldHeight/2 - 50), direction: CGVector(dx: 0, dy: -1), movement: .straight),
+                ArgosyShipConfig(name: "ship1", initialPosition: CGPoint(x: w/2 - fieldHeight/2 + 50, y: fieldCenterY), direction: CGVector(dx: 1, dy: 0), movement: .turnRight),
+                ArgosyShipConfig(name: "ship2", initialPosition: CGPoint(x: w/2, y: fieldCenterY - fieldHeight/2 + 50), direction: CGVector(dx: 0, dy: -1), movement: .straight),
+                ArgosyShipConfig(name: "ship3", initialPosition: CGPoint(x: w/2 + fieldHeight/2 - 80, y: fieldCenterY), direction: CGVector(dx: -1, dy: 0), movement: .turnRight)
             ]
             
         case 4:
             roadConfigs = [
-                (CGPoint(x: w/2, y: fieldCenterY), CGSize(width: w, height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 200:100)),
-                (CGPoint(x: w/2, y: fieldCenterY), CGSize(width: OxfordgamesDeviceManager.shared.deviceType == .pad ? 200:100, height: fieldHeight))
+                (CGPoint(x: w/2, y: fieldCenterY), CGSize(width: w, height: ArgosyDeviceManager.shared.deviceType == .pad ? 200:100)),
+                (CGPoint(x: w/2, y: fieldCenterY), CGSize(width: ArgosyDeviceManager.shared.deviceType == .pad ? 200:100, height: fieldHeight))
             ]
             shipConfigs = [
-                OxfordgamesShipConfig(name: "ship0", initialPosition: CGPoint(x: w/2, y: fieldCenterY + fieldHeight/2 - 50), direction: CGVector(dx: 0, dy: -1), movement: .straight),
-                OxfordgamesShipConfig(name: "ship1", initialPosition: CGPoint(x: w/2 - fieldHeight/2 + 50, y: fieldCenterY), direction: CGVector(dx: 1, dy: 0), movement: .turnLeft),
-                OxfordgamesShipConfig(name: "ship2", initialPosition: CGPoint(x: w/2, y: fieldCenterY - fieldHeight/2 + 50), direction: CGVector(dx: 0, dy: -1), movement: .straight),
-                OxfordgamesShipConfig(name: "ship3", initialPosition: CGPoint(x: w/2 + fieldHeight/2 - 80, y: fieldCenterY), direction: CGVector(dx: -1, dy: 0), movement: .turnLeft)
+                ArgosyShipConfig(name: "ship0", initialPosition: CGPoint(x: w/2, y: fieldCenterY + fieldHeight/2 - 50), direction: CGVector(dx: 0, dy: -1), movement: .straight),
+                ArgosyShipConfig(name: "ship1", initialPosition: CGPoint(x: w/2 - fieldHeight/2 + 50, y: fieldCenterY), direction: CGVector(dx: 1, dy: 0), movement: .turnLeft),
+                ArgosyShipConfig(name: "ship2", initialPosition: CGPoint(x: w/2, y: fieldCenterY - fieldHeight/2 + 50), direction: CGVector(dx: 0, dy: -1), movement: .straight),
+                ArgosyShipConfig(name: "ship3", initialPosition: CGPoint(x: w/2 + fieldHeight/2 - 80, y: fieldCenterY), direction: CGVector(dx: -1, dy: 0), movement: .turnLeft)
             ]
             
         case 5:
             roadConfigs = [
-                (CGPoint(x: w/2, y: fieldCenterY), CGSize(width: w, height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 200:100)),
-                (CGPoint(x: w/2, y: fieldCenterY), CGSize(width: OxfordgamesDeviceManager.shared.deviceType == .pad ? 200:100, height: fieldHeight))
+                (CGPoint(x: w/2, y: fieldCenterY), CGSize(width: w, height: ArgosyDeviceManager.shared.deviceType == .pad ? 200:100)),
+                (CGPoint(x: w/2, y: fieldCenterY), CGSize(width: ArgosyDeviceManager.shared.deviceType == .pad ? 200:100, height: fieldHeight))
             ]
             shipConfigs = [
-                OxfordgamesShipConfig(name: "ship0", initialPosition: CGPoint(x: w/2, y: fieldCenterY + fieldHeight/2 - 50), direction: CGVector(dx: 0, dy: -1), movement: .turnLeft),
-                OxfordgamesShipConfig(name: "ship1", initialPosition: CGPoint(x: w/2 - fieldHeight/2 + 50, y: fieldCenterY), direction: CGVector(dx: 1, dy: 0), movement: .straight),
-                OxfordgamesShipConfig(name: "ship2", initialPosition: CGPoint(x: w/2, y: fieldCenterY - fieldHeight/2 + 50), direction: CGVector(dx: 0, dy: 1), movement: .turnLeft),
-                OxfordgamesShipConfig(name: "ship3", initialPosition: CGPoint(x: w/2 + fieldHeight/2 - 80, y: fieldCenterY), direction: CGVector(dx: 1, dy: 0), movement: .straight)
+                ArgosyShipConfig(name: "ship0", initialPosition: CGPoint(x: w/2, y: fieldCenterY + fieldHeight/2 - 50), direction: CGVector(dx: 0, dy: -1), movement: .turnLeft),
+                ArgosyShipConfig(name: "ship1", initialPosition: CGPoint(x: w/2 - fieldHeight/2 + 50, y: fieldCenterY), direction: CGVector(dx: 1, dy: 0), movement: .straight),
+                ArgosyShipConfig(name: "ship2", initialPosition: CGPoint(x: w/2, y: fieldCenterY - fieldHeight/2 + 50), direction: CGVector(dx: 0, dy: 1), movement: .turnLeft),
+                ArgosyShipConfig(name: "ship3", initialPosition: CGPoint(x: w/2 + fieldHeight/2 - 80, y: fieldCenterY), direction: CGVector(dx: 1, dy: 0), movement: .straight)
             ]
             
         case 6:
             roadConfigs = [
-                (CGPoint(x: w/2, y: fieldCenterY), CGSize(width: w, height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 200:100)),
-                (CGPoint(x: w/2, y: fieldCenterY), CGSize(width: OxfordgamesDeviceManager.shared.deviceType == .pad ? 200:100, height: fieldHeight))
+                (CGPoint(x: w/2, y: fieldCenterY), CGSize(width: w, height: ArgosyDeviceManager.shared.deviceType == .pad ? 200:100)),
+                (CGPoint(x: w/2, y: fieldCenterY), CGSize(width: ArgosyDeviceManager.shared.deviceType == .pad ? 200:100, height: fieldHeight))
             ]
             shipConfigs = [
-                OxfordgamesShipConfig(name: "ship0", initialPosition: CGPoint(x: w/2, y: fieldCenterY + fieldHeight/2 - 50), direction: CGVector(dx: 0, dy: -1), movement: .straight),
-                OxfordgamesShipConfig(name: "ship1", initialPosition: CGPoint(x: w/2 - fieldHeight/2 + 50, y: fieldCenterY), direction: CGVector(dx: 1, dy: 0), movement: .turnRight),
-                OxfordgamesShipConfig(name: "ship2", initialPosition: CGPoint(x: w/2, y: fieldCenterY - fieldHeight/2 + 50), direction: CGVector(dx: 0, dy: -1), movement: .straight),
-                OxfordgamesShipConfig(name: "ship3", initialPosition: CGPoint(x: w/2 + fieldHeight/2 - 80, y: fieldCenterY), direction: CGVector(dx: -1, dy: 0), movement: .turnLeft)
+                ArgosyShipConfig(name: "ship0", initialPosition: CGPoint(x: w/2, y: fieldCenterY + fieldHeight/2 - 50), direction: CGVector(dx: 0, dy: -1), movement: .straight),
+                ArgosyShipConfig(name: "ship1", initialPosition: CGPoint(x: w/2 - fieldHeight/2 + 50, y: fieldCenterY), direction: CGVector(dx: 1, dy: 0), movement: .turnRight),
+                ArgosyShipConfig(name: "ship2", initialPosition: CGPoint(x: w/2, y: fieldCenterY - fieldHeight/2 + 50), direction: CGVector(dx: 0, dy: -1), movement: .straight),
+                ArgosyShipConfig(name: "ship3", initialPosition: CGPoint(x: w/2 + fieldHeight/2 - 80, y: fieldCenterY), direction: CGVector(dx: -1, dy: 0), movement: .turnLeft)
             ]
             
         case 7:
             roadConfigs = [
-                (CGPoint(x: w/2, y: fieldCenterY), CGSize(width: w, height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 200:100)),
-                (CGPoint(x: w/2, y: fieldCenterY), CGSize(width: OxfordgamesDeviceManager.shared.deviceType == .pad ? 200:100, height: fieldHeight))
+                (CGPoint(x: w/2, y: fieldCenterY), CGSize(width: w, height: ArgosyDeviceManager.shared.deviceType == .pad ? 200:100)),
+                (CGPoint(x: w/2, y: fieldCenterY), CGSize(width: ArgosyDeviceManager.shared.deviceType == .pad ? 200:100, height: fieldHeight))
             ]
             shipConfigs = [
-                OxfordgamesShipConfig(name: "ship0", initialPosition: CGPoint(x: w/2, y: fieldCenterY + fieldHeight/2 - 50), direction: CGVector(dx: 0, dy: -1), movement: .straight),
-                OxfordgamesShipConfig(name: "ship1", initialPosition: CGPoint(x: w/2 - fieldHeight/2 + 50, y: fieldCenterY), direction: CGVector(dx: 1, dy: 0), movement: .turnRight),
-                OxfordgamesShipConfig(name: "ship2", initialPosition: CGPoint(x: w/2, y: fieldCenterY - fieldHeight/2 + 50), direction: CGVector(dx: 0, dy: -1), movement: .straight),
-                OxfordgamesShipConfig(name: "ship3", initialPosition: CGPoint(x: w/2 + fieldHeight/2 - 80, y: fieldCenterY), direction: CGVector(dx: -1, dy: 0), movement: .turnLeft)
+                ArgosyShipConfig(name: "ship0", initialPosition: CGPoint(x: w/2, y: fieldCenterY + fieldHeight/2 - 50), direction: CGVector(dx: 0, dy: -1), movement: .straight),
+                ArgosyShipConfig(name: "ship1", initialPosition: CGPoint(x: w/2 - fieldHeight/2 + 50, y: fieldCenterY), direction: CGVector(dx: 1, dy: 0), movement: .turnRight),
+                ArgosyShipConfig(name: "ship2", initialPosition: CGPoint(x: w/2, y: fieldCenterY - fieldHeight/2 + 50), direction: CGVector(dx: 0, dy: -1), movement: .straight),
+                ArgosyShipConfig(name: "ship3", initialPosition: CGPoint(x: w/2 + fieldHeight/2 - 80, y: fieldCenterY), direction: CGVector(dx: -1, dy: 0), movement: .turnLeft)
             ]
             
         case 8:
             roadConfigs = [
-                (CGPoint(x: w/2, y: fieldCenterY), CGSize(width: w, height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 200:100)),
-                (CGPoint(x: w/2, y: fieldCenterY), CGSize(width: OxfordgamesDeviceManager.shared.deviceType == .pad ? 200:100, height: fieldHeight))
+                (CGPoint(x: w/2, y: fieldCenterY), CGSize(width: w, height: ArgosyDeviceManager.shared.deviceType == .pad ? 200:100)),
+                (CGPoint(x: w/2, y: fieldCenterY), CGSize(width: ArgosyDeviceManager.shared.deviceType == .pad ? 200:100, height: fieldHeight))
             ]
             shipConfigs = [
-                OxfordgamesShipConfig(name: "ship0", initialPosition: CGPoint(x: w/2, y: fieldCenterY + fieldHeight/2 - 50), direction: CGVector(dx: 0, dy: -1), movement: .straight),
-                OxfordgamesShipConfig(name: "ship1", initialPosition: CGPoint(x: w/2 - fieldHeight/2 + 50, y: fieldCenterY), direction: CGVector(dx: 1, dy: 0), movement: .turnRight),
-                OxfordgamesShipConfig(name: "ship2", initialPosition: CGPoint(x: w/2, y: fieldCenterY - fieldHeight/2 + 50), direction: CGVector(dx: 0, dy: -1), movement: .straight),
-                OxfordgamesShipConfig(name: "ship3", initialPosition: CGPoint(x: w/2 + fieldHeight/2 - 80, y: fieldCenterY), direction: CGVector(dx: -1, dy: 0), movement: .turnRight)
+                ArgosyShipConfig(name: "ship0", initialPosition: CGPoint(x: w/2, y: fieldCenterY + fieldHeight/2 - 50), direction: CGVector(dx: 0, dy: -1), movement: .straight),
+                ArgosyShipConfig(name: "ship1", initialPosition: CGPoint(x: w/2 - fieldHeight/2 + 50, y: fieldCenterY), direction: CGVector(dx: 1, dy: 0), movement: .turnRight),
+                ArgosyShipConfig(name: "ship2", initialPosition: CGPoint(x: w/2, y: fieldCenterY - fieldHeight/2 + 50), direction: CGVector(dx: 0, dy: -1), movement: .straight),
+                ArgosyShipConfig(name: "ship3", initialPosition: CGPoint(x: w/2 + fieldHeight/2 - 80, y: fieldCenterY), direction: CGVector(dx: -1, dy: 0), movement: .turnRight)
             ]
             
         case 9:
             roadConfigs = [
-                (CGPoint(x: w/2, y: fieldCenterY), CGSize(width: w, height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 200:100)),
-                (CGPoint(x: w/2, y: fieldCenterY), CGSize(width: OxfordgamesDeviceManager.shared.deviceType == .pad ? 200:100, height: fieldHeight))
+                (CGPoint(x: w/2, y: fieldCenterY), CGSize(width: w, height: ArgosyDeviceManager.shared.deviceType == .pad ? 200:100)),
+                (CGPoint(x: w/2, y: fieldCenterY), CGSize(width: ArgosyDeviceManager.shared.deviceType == .pad ? 200:100, height: fieldHeight))
             ]
             shipConfigs = [
-                OxfordgamesShipConfig(name: "ship0", initialPosition: CGPoint(x: w/2, y: fieldCenterY + fieldHeight/2 - 50), direction: CGVector(dx: 0, dy: 1), movement: .straight),
-                OxfordgamesShipConfig(name: "ship1", initialPosition: CGPoint(x: w/2 - fieldHeight/2 + 50, y: fieldCenterY), direction: CGVector(dx: 1, dy: 0), movement: .turnLeft),
-                OxfordgamesShipConfig(name: "ship2", initialPosition: CGPoint(x: w/2, y: fieldCenterY - fieldHeight/2 + 50), direction: CGVector(dx: 0, dy: 1), movement: .turnRight),
-                OxfordgamesShipConfig(name: "ship3", initialPosition: CGPoint(x: w/2 + fieldHeight/2 - 80, y: fieldCenterY), direction: CGVector(dx: -1, dy: 0), movement: .straight)
+                ArgosyShipConfig(name: "ship0", initialPosition: CGPoint(x: w/2, y: fieldCenterY + fieldHeight/2 - 50), direction: CGVector(dx: 0, dy: 1), movement: .straight),
+                ArgosyShipConfig(name: "ship1", initialPosition: CGPoint(x: w/2 - fieldHeight/2 + 50, y: fieldCenterY), direction: CGVector(dx: 1, dy: 0), movement: .turnLeft),
+                ArgosyShipConfig(name: "ship2", initialPosition: CGPoint(x: w/2, y: fieldCenterY - fieldHeight/2 + 50), direction: CGVector(dx: 0, dy: 1), movement: .turnRight),
+                ArgosyShipConfig(name: "ship3", initialPosition: CGPoint(x: w/2 + fieldHeight/2 - 80, y: fieldCenterY), direction: CGVector(dx: -1, dy: 0), movement: .straight)
             ]
         default:
             break
@@ -170,7 +170,7 @@ class OxfordgamesGameScene: SKScene, SKPhysicsContactDelegate {
         guard let item = shopVM.currentPersonItem else { return }
         for shipConfig in shipConfigs {
             let ship = SKSpriteNode(imageNamed: item.image)
-            ship.size = CGSize(width: OxfordgamesDeviceManager.shared.deviceType == .pad ? 350:175, height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 130:65)
+            ship.size = CGSize(width: ArgosyDeviceManager.shared.deviceType == .pad ? 350:175, height: ArgosyDeviceManager.shared.deviceType == .pad ? 130:65)
             ship.position = shipConfig.initialPosition
             ship.name = shipConfig.name
             ship.zRotation = atan2(shipConfig.direction.dy, shipConfig.direction.dx)
@@ -179,7 +179,7 @@ class OxfordgamesGameScene: SKScene, SKPhysicsContactDelegate {
                 "direction": NSValue(cgVector: shipConfig.direction),
                 "movementType": shipConfig.movement.rawValue
             ]
-            ship.physicsBody = SKPhysicsBody(circleOfRadius: OxfordgamesDeviceManager.shared.deviceType == .pad ? 40:20)
+            ship.physicsBody = SKPhysicsBody(circleOfRadius: ArgosyDeviceManager.shared.deviceType == .pad ? 40:20)
             ship.physicsBody?.categoryBitMask = 0x1 << 0
             ship.physicsBody?.contactTestBitMask = 0x1 << 0
             ship.physicsBody?.collisionBitMask = 0
@@ -199,14 +199,14 @@ class OxfordgamesGameScene: SKScene, SKPhysicsContactDelegate {
             }
             
             let arrow = SKSpriteNode(imageNamed: arrowTextureName)
-            arrow.size = CGSize(width: OxfordgamesDeviceManager.shared.deviceType == .pad ? 40:20, height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 80:40)
-            arrow.position = CGPoint(x: OxfordgamesDeviceManager.shared.deviceType == .pad ? 40:20, y: 0)
+            arrow.size = CGSize(width: ArgosyDeviceManager.shared.deviceType == .pad ? 40:20, height: ArgosyDeviceManager.shared.deviceType == .pad ? 80:40)
+            arrow.position = CGPoint(x: ArgosyDeviceManager.shared.deviceType == .pad ? 40:20, y: 0)
             arrow.zRotation = -(.pi/2)
             ship.addChild(arrow)
             shipArrows[ship] = arrow
             
             let bigArrow = SKSpriteNode(imageNamed: "arrow")
-            bigArrow.size = CGSize(width: OxfordgamesDeviceManager.shared.deviceType == .pad ? 120:60, height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 60:30)
+            bigArrow.size = CGSize(width: ArgosyDeviceManager.shared.deviceType == .pad ? 120:60, height: ArgosyDeviceManager.shared.deviceType == .pad ? 60:30)
             bigArrow.position = CGPoint(x: shipConfig.initialPosition.x, y: shipConfig.initialPosition.y + 50)
             bigArrow.zRotation = ship.zRotation - .pi/2
             //addChild(bigArrow)
@@ -307,5 +307,5 @@ class OxfordgamesGameScene: SKScene, SKPhysicsContactDelegate {
 }
 
 #Preview {
-    OxfordgamesGameView(shopVM: ArgosyShopViewModel(), level: 0)
+    ArgosyGameView(shopVM: ArgosyShopViewModel(), level: 0)
 }

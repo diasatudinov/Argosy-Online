@@ -19,14 +19,14 @@ struct ArgosyGameView: View {
             ArgosySpriteViewContainer(scene: gameScene, isWin: $isWin, score: $score, level: level)
                 .ignoresSafeArea()
             
-            VStack(spacing: OxfordgamesDeviceManager.shared.deviceType == .pad ? 200:100) {
-                HStack(spacing: OxfordgamesDeviceManager.shared.deviceType == .pad ? 200:100) {
+            VStack(spacing: ArgosyDeviceManager.shared.deviceType == .pad ? 200:100) {
+                HStack(spacing: ArgosyDeviceManager.shared.deviceType == .pad ? 200:100) {
                     ZStack {
                         Image(.rectangleMainGameArgosy)
                             .resizable()
                             .scaledToFit()
                     }
-                    .frame(width: OxfordgamesDeviceManager.shared.deviceType == .pad ? 280:140,height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 400:200)
+                    .frame(width: ArgosyDeviceManager.shared.deviceType == .pad ? 280:140,height: ArgosyDeviceManager.shared.deviceType == .pad ? 400:200)
                     
                     ZStack {
                         Image(.rectangleMainGameArgosy)
@@ -35,10 +35,10 @@ struct ArgosyGameView: View {
                             
                         
                     }
-                    .frame(width: OxfordgamesDeviceManager.shared.deviceType == .pad ? 280:140,height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 400:200)
+                    .frame(width: ArgosyDeviceManager.shared.deviceType == .pad ? 280:140,height: ArgosyDeviceManager.shared.deviceType == .pad ? 400:200)
                 }
                 
-                HStack(spacing: OxfordgamesDeviceManager.shared.deviceType == .pad ? 200:100) {
+                HStack(spacing: ArgosyDeviceManager.shared.deviceType == .pad ? 200:100) {
                     ZStack {
                         Image(.rectangleMainGameArgosy)
                             .resizable()
@@ -46,7 +46,7 @@ struct ArgosyGameView: View {
                             
                         
                     }
-                    .frame(width: OxfordgamesDeviceManager.shared.deviceType == .pad ? 280: 140,height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 400:200)
+                    .frame(width: ArgosyDeviceManager.shared.deviceType == .pad ? 280: 140,height: ArgosyDeviceManager.shared.deviceType == .pad ? 400:200)
                     
                     ZStack {
                         Image(.rectangleMainGameArgosy)
@@ -55,7 +55,7 @@ struct ArgosyGameView: View {
                             
                         
                     }
-                    .frame(width: OxfordgamesDeviceManager.shared.deviceType == .pad ? 280:140,height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 400:200)
+                    .frame(width: ArgosyDeviceManager.shared.deviceType == .pad ? 280:140,height: ArgosyDeviceManager.shared.deviceType == .pad ? 400:200)
                 }
             }
             
@@ -69,7 +69,7 @@ struct ArgosyGameView: View {
                             Image(.backIconArgosy)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 100:50)
+                                .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 100:50)
                         }
                         Spacer()
                         Button {
@@ -79,7 +79,7 @@ struct ArgosyGameView: View {
                             Image(.restartGameBtnArgosy)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 100:50)
+                                .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 100:50)
                         }
                         
                         
@@ -100,7 +100,7 @@ struct ArgosyGameView: View {
                         Image(.winBgArgosy)
                             .resizable()
                             .scaledToFit()
-                            .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 400:223)
+                            .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 400:223)
                         Button {
                             gameScene.restartLevel()
                             isWin = false
@@ -108,7 +108,7 @@ struct ArgosyGameView: View {
                             Image(.nextLvlBtnArgosy)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 200:105)
+                                .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 200:105)
                         }
                         
                         Button {
@@ -117,10 +117,10 @@ struct ArgosyGameView: View {
                             Image(.backBtnGreenArgosy)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 200:105)
+                                .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 200:105)
                         }
                         
-                    }.padding(.bottom, OxfordgamesDeviceManager.shared.deviceType == .pad ? 100 : 50)
+                    }.padding(.bottom, ArgosyDeviceManager.shared.deviceType == .pad ? 100 : 50)
                 }
             }
             

@@ -8,9 +8,9 @@ struct ArgosyMainMenu: View {
     @State private var showMiniGames = false
     @State private var showSettings = false
     
-    @StateObject var achievementVM = AchievementsViewModelSG()
-    @StateObject var settingsVM = OxfordgamesSettingsViewModel()
-    @StateObject var shopVM = StoreViewModelSG()
+    @StateObject var achievementVM = ArgosyAchievementsViewModel()
+    @StateObject var settingsVM = ArgosySettingsViewModel()
+    @StateObject var shopVM = ArgosyShopViewModel()
     
     var body: some View {
         
@@ -22,7 +22,7 @@ struct ArgosyMainMenu: View {
                     
                     Spacer()
                     
-                    OxfordgamesCoinBg()
+                    ArgosyCoinBg()
                     
                     
                 }
@@ -35,7 +35,7 @@ struct ArgosyMainMenu: View {
                     Image(.playIconArgosy)
                         .resizable()
                         .scaledToFit()
-                        .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 210:105)
+                        .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 210:105)
                 }
                 
                 Button {
@@ -44,7 +44,7 @@ struct ArgosyMainMenu: View {
                     Image(.shopIconArgosy)
                         .resizable()
                         .scaledToFit()
-                        .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 210:105)
+                        .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 210:105)
                 }
                 
                 Button {
@@ -53,7 +53,7 @@ struct ArgosyMainMenu: View {
                     Image(.achievementsIconArgosy)
                         .resizable()
                         .scaledToFit()
-                        .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 210:105)
+                        .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 210:105)
                 }
                 
                 Button {
@@ -62,7 +62,7 @@ struct ArgosyMainMenu: View {
                     Image(.settingsIconArgosy)
                         .resizable()
                         .scaledToFit()
-                        .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 210:105)
+                        .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 210:105)
                 }
                 
                 
@@ -72,7 +72,7 @@ struct ArgosyMainMenu: View {
                     Image(.miniGamesIconArgosy)
                         .resizable()
                         .scaledToFit()
-                        .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 160:80)
+                        .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 160:80)
                 }
                 
                 Spacer()
@@ -89,19 +89,19 @@ struct ArgosyMainMenu: View {
             }
         )
         .fullScreenCover(isPresented: $showGame) {
-//                        OxfordgamesChooseLevelView(shopVM: shopVM)
+            ArgosyChooseLevelView(shopVM: shopVM)
         }
         .fullScreenCover(isPresented: $showMiniGames) {
             ArgosyChooseMiniGame()
         }
         .fullScreenCover(isPresented: $showAchievement) {
-            AchievementsViewSG(viewModel: achievementVM)
+            ArgosyAchievementsView(viewModel: achievementVM)
         }
         .fullScreenCover(isPresented: $showShop) {
-            ShopViewSG(viewModel: shopVM)
+            ArgosyShopView(viewModel: shopVM)
         }
         .fullScreenCover(isPresented: $showSettings) {
-            OxfordgamesSettingsView(settingsVM: settingsVM)
+            ArgosySettingsView(settingsVM: settingsVM)
         }
         
         
