@@ -1,11 +1,3 @@
-//
-//  OxfordgamesWV.swift
-//  Argosy Online
-//
-//  Created by Dias Atudinov on 19.05.2025.
-//
-
-
 import SwiftUI
 import WebKit
 
@@ -60,7 +52,7 @@ struct ArgosyWV: UIViewRepresentable {
     }
 }
 
-struct OxfordgamesWVWrap: View {
+struct ArgosyWVWrap: View {
     @State private var nAllow = true
     var urlString = ""
     @AppStorage("firstOpen") var firstOpen = true

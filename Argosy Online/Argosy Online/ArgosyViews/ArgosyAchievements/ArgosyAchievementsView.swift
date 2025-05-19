@@ -16,7 +16,7 @@ struct ArgosyAchievementsView: View {
                             Image(.backIconArgosy)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 100:50)
+                                .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 100:50)
                         }
                         Spacer()
                     }.padding([.horizontal, .top])
@@ -25,7 +25,7 @@ struct ArgosyAchievementsView: View {
                 Image(.achievementsTextArgosy)
                     .resizable()
                     .scaledToFit()
-                    .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 210:105)
+                    .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 210:105)
                 
                 ScrollView {
                     
@@ -37,7 +37,7 @@ struct ArgosyAchievementsView: View {
                                 Image(viewModel.achievements[0].image)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 300:150)
+                                    .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 300:150)
                                     .opacity(viewModel.achievements[0].isAchieved ? 1 : 0.3)
                                 
                             }.onTapGesture {
@@ -53,7 +53,7 @@ struct ArgosyAchievementsView: View {
                                 Image(viewModel.achievements[1].image)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 300:150)
+                                    .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 300:150)
                                     .opacity(viewModel.achievements[1].isAchieved ? 1 : 0.3)
                                 
                             }.onTapGesture {
@@ -66,7 +66,7 @@ struct ArgosyAchievementsView: View {
                                 Image(viewModel.achievements[2].image)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 300:150)
+                                    .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 300:150)
                                     .opacity(viewModel.achievements[2].isAchieved ? 1 : 0.3)
                                 
                             }.onTapGesture {
@@ -81,7 +81,7 @@ struct ArgosyAchievementsView: View {
                                 Image(viewModel.achievements[3].image)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 300:150)
+                                    .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 300:150)
                                     .opacity(viewModel.achievements[3].isAchieved ? 1 : 0.3)
                                 
                             }.onTapGesture {
@@ -94,7 +94,7 @@ struct ArgosyAchievementsView: View {
                                 Image(viewModel.achievements[4].image)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 300:150)
+                                    .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 300:150)
                                     .opacity(viewModel.achievements[4].isAchieved ? 1 : 0.3)
                                 
                             }.onTapGesture {

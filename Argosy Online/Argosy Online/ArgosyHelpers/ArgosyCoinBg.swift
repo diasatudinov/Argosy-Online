@@ -9,14 +9,14 @@ struct ArgosyCoinBg: View {
                 .scaledToFit()
             
             Text("\(user.money)")
-                .font(.system(size: OxfordgamesDeviceManager.shared.deviceType == .pad ? 48:24, weight: .black))
+                .font(.system(size: ArgosyDeviceManager.shared.deviceType == .pad ? 48:24, weight: .black))
                 .foregroundStyle(.white)
                 .textCase(.uppercase)
                 .offset(x: 20)
             
             
             
-        }.frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 100:50)
+        }.frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 100:50)
         
     }
 }

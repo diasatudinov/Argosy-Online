@@ -2,7 +2,7 @@ import SwiftUI
 
 struct ArgosyChooseLevelView: View {
     @Environment(\.presentationMode) var presentationMode
-    @ObservedObject var shopVM: StoreViewModelSG
+    @ObservedObject var shopVM: ArgosyShopViewModel
     
     @State var openGame = false
     @State var selectedIndex = 0
@@ -18,17 +18,17 @@ struct ArgosyChooseLevelView: View {
                             Image(.backIconArgosy)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 100:50)
+                                .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 100:50)
                         }
                         Spacer()
-                        OxfordgamesCoinBg()
+                        ArgosyCoinBg()
                     }.padding([.horizontal, .top])
                 }
                 
                 Image(.levelsTextArgosy)
                     .resizable()
                     .scaledToFit()
-                    .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 180:90)
+                    .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 180:90)
                 
                 
                 Spacer()
@@ -42,10 +42,10 @@ struct ArgosyChooseLevelView: View {
                                 Image(.levelNumBgArgosy)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 150:100)
+                                    .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 150:100)
                                 
                                 Text("\(index + 1)")
-                                    .font(.system(size: OxfordgamesDeviceManager.shared.deviceType == .pad ? 80:40, weight: .bold))
+                                    .font(.system(size: ArgosyDeviceManager.shared.deviceType == .pad ? 80:40, weight: .bold))
                                     .foregroundStyle(.white)
                             }
                             .onTapGesture {
@@ -56,7 +56,7 @@ struct ArgosyChooseLevelView: View {
                                 
                             }
                         }
-                    }.frame(width: OxfordgamesDeviceManager.shared.deviceType == .pad ? 500:340)
+                    }.frame(width: ArgosyDeviceManager.shared.deviceType == .pad ? 500:340)
             
                 }
                 Spacer()
@@ -71,7 +71,7 @@ struct ArgosyChooseLevelView: View {
             }
         )
         .fullScreenCover(isPresented: $openGame) {
-             OxfordgamesGameView(shopVM: shopVM, level: selectedIndex)
+             ArgosyGameView(shopVM: shopVM, level: selectedIndex)
         }
     }
     
@@ -79,5 +79,5 @@ struct ArgosyChooseLevelView: View {
 
 
 #Preview {
-    ArgosyChooseLevelView(shopVM: StoreViewModelSG())
+    ArgosyChooseLevelView(shopVM: ArgosyShopViewModel())
 }
