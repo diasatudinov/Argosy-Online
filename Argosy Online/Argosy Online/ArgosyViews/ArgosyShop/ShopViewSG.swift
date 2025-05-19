@@ -59,7 +59,7 @@ struct ShopViewSG: View {
                                 skinIndex -= 1
                             }
                         } label: {
-                            Image(.arrowArgosy)
+                            Image(.arrowShopArgosy)
                                 .resizable()
                                 .scaledToFit()
                                 .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 100:50)
@@ -76,7 +76,7 @@ struct ShopViewSG: View {
                                 skinIndex += 1
                             }
                         } label: {
-                            Image(.arrowArgosy)
+                            Image(.arrowShopArgosy)
                                 .resizable()
                                 .scaledToFit()
                                 .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 100:50)
@@ -96,7 +96,7 @@ struct ShopViewSG: View {
                                 backIndex -= 1
                             }
                         } label: {
-                            Image(.arrowArgosy)
+                            Image(.arrowShopArgosy)
                                 .resizable()
                                 .scaledToFit()
                                 .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 100:50)
@@ -114,7 +114,7 @@ struct ShopViewSG: View {
                                 backIndex += 1
                             }
                         } label: {
-                            Image(.arrowArgosy)
+                            Image(.arrowShopArgosy)
                                 .resizable()
                                 .scaledToFit()
                                 .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 100:50)
@@ -149,7 +149,7 @@ struct ShopViewSG: View {
                         ZStack {
                             
                             if let currentItem = viewModel.currentPersonItem, currentItem.name == item.name {
-                                Image(.arrowArgosy)
+                                Image(.arrowShopArgosy)
                                     .resizable()
                                     .scaledToFit()
                                     .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 100:50)
@@ -177,7 +177,7 @@ struct ShopViewSG: View {
                         ZStack {
                             
                             if let currentItem = viewModel.currentBgItem, currentItem.name == item.name {
-                                Image(.arrowArgosy)
+                                Image(.arrowShopArgosy)
                                     .resizable()
                                     .scaledToFit()
                                     .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 100:50)

@@ -56,8 +56,8 @@ class StoreViewModelSG: ObservableObject {
         loadBoughtItem()
     }
     
-    private let userDefaultsBgKey = "BgKeyArgosy"
-    private let userDefaultsPersonKey = "BirdKeyArgosy"
+    private let userDefaultsBgKey = "bgKeyArgosy"
+    private let userDefaultsPersonKey = "skinsKeyArgosy"
     private let userDefaultsBoughtKey = "boughtItemsArgosy"
 
     
