@@ -1,10 +1,3 @@
-//
-//  ArgosyChooseMiniGame.swift
-//  Argosy Online
-//
-//  Created by Dias Atudinov on 16.05.2025.
-//
-
 import SwiftUI
 
 struct ArgosyChooseMiniGame: View {
@@ -25,18 +18,18 @@ struct ArgosyChooseMiniGame: View {
                             Image(.backIconArgosy)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 100:50)
+                                .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 100:50)
                         }
                         Spacer()
                         
-                        OxfordgamesCoinBg()
+                        ArgosyCoinBg()
                     }.padding([.horizontal, .top])
                     
                 }
                 Image(.miniGameTextArgosy)
                     .resizable()
                     .scaledToFit()
-                    .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 210:105)
+                    .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 210:105)
                 Spacer()
                 
                 VStack(spacing: 13) {
@@ -46,7 +39,7 @@ struct ArgosyChooseMiniGame: View {
                         Image(.gameText1Argosy)
                             .resizable()
                             .scaledToFit()
-                            .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 180:90)
+                            .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 180:90)
                           
                     }
                     
@@ -56,7 +49,7 @@ struct ArgosyChooseMiniGame: View {
                         Image(.gameText2Argosy)
                             .resizable()
                             .scaledToFit()
-                            .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 180:90)
+                            .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 180:90)
                           
                     }
                     
@@ -66,7 +59,7 @@ struct ArgosyChooseMiniGame: View {
                         Image(.gameText3Argosy)
                             .resizable()
                             .scaledToFit()
-                            .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 180:90)
+                            .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 180:90)
                           
                     }
                     
@@ -76,7 +69,7 @@ struct ArgosyChooseMiniGame: View {
                         Image(.gameText4Argosy)
                             .resizable()
                             .scaledToFit()
-                            .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 180:90)
+                            .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 180:90)
                           
                     }
                 }
@@ -93,16 +86,16 @@ struct ArgosyChooseMiniGame: View {
             }
         )
         .fullScreenCover(isPresented: $game1) {
-            OxfordgamesNumberGuessGame()
+            ArgosyNumberGuessGame()
         }
         .fullScreenCover(isPresented: $game2) {
-            CoupleGameView()
+            ArgosyCoupleGameView()
         }
         .fullScreenCover(isPresented: $game3) {
-            OxfordgamesMemorizationView()
+            ArgosyMemorizationView()
         }
         .fullScreenCover(isPresented: $game4) {
-            OxfordgamesMazeGameView()
+            ArgosyMazeGameView()
         }
     }
 }

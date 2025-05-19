@@ -3,8 +3,8 @@ import SpriteKit
 
 
 struct ArgosySpriteViewContainer: UIViewRepresentable {
-    @StateObject var user = OxfordgamesUser.shared
-    var scene: OxfordgamesGameScene
+    @StateObject var user = ArgosyUser.shared
+    var scene: ArgosyGameScene
     @Binding var isWin: Bool
     @Binding var score: Int
     var level: Int

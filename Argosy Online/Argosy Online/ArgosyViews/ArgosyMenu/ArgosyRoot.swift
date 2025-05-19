@@ -1,11 +1,3 @@
-//
-//  OxfordgamesRoot.swift
-//  Argosy Online
-//
-//  Created by Dias Atudinov on 19.05.2025.
-//
-
-
 import SwiftUI
 
 struct ArgosyRoot: View {
@@ -17,7 +9,7 @@ struct ArgosyRoot: View {
     var body: some View {
         ZStack {
             if verse == 1 {
-                OxfordgamesWVWrap(urlString: OxfordgamesLinks.winStarData)
+                ArgosyWVWrap(urlString: ArgosyLinks.winStarData)
             } else {
                 VStack {
                     if isLoading {
@@ -45,9 +37,9 @@ struct ArgosyRoot: View {
     }
     
     func updateIfNeeded() {
-        if OxfordgamesLinks.shared.finalURL == nil {
+        if ArgosyLinks.shared.finalURL == nil {
             Task {
-                if await !OxfordgamesResolver.checking() {
+                if await !ArgosyResolver.checking() {
                     verse = 1
                     toUp = false
                     isLoading = false

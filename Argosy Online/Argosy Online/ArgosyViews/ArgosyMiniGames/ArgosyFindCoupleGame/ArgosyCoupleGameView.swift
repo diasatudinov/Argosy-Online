@@ -4,11 +4,11 @@ import AVFoundation
 struct ArgosyCoupleGameView: View {
     @Environment(\.presentationMode) var presentationMode
 
-    @StateObject var user = OxfordgamesUser.shared
+    @StateObject var user = ArgosyUser.shared
     @State private var audioPlayer: AVAudioPlayer?
     
-    @State private var cards: [Card] = []
-    @State private var selectedCards: [Card] = []
+    @State private var cards: [ArgosyCard] = []
+    @State private var selectedCards: [ArgosyCard] = []
     @State private var message: String = "Find all matching cards!"
     @State private var gameEnded: Bool = false
     @State private var isWin: Bool = false
@@ -33,28 +33,28 @@ struct ArgosyCoupleGameView: View {
                             Image(.backIconArgosy)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 100:50)
+                                .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 100:50)
                         }
                         
                         Spacer()
                         
-                        OxfordgamesCoinBg()
+                        ArgosyCoinBg()
                     }.padding(.horizontal)
                     
-                    VStack(spacing: OxfordgamesDeviceManager.shared.deviceType == .pad ? -40:-20) {
+                    VStack(spacing: ArgosyDeviceManager.shared.deviceType == .pad ? -40:-20) {
                         Image(.findCoupleTextArgosy)
                             .resizable()
                             .scaledToFit()
-                            .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 210:105)
+                            .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 210:105)
                         
                         ZStack {
                             Image(.coupleTimerBgArgosy)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 120:60)
+                                .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 120:60)
                             
                             Text("\(timeLeft)")
-                                .font(.system(size: OxfordgamesDeviceManager.shared.deviceType == .pad ? 40:20, weight: .bold))
+                                .font(.system(size: ArgosyDeviceManager.shared.deviceType == .pad ? 40:20, weight: .bold))
                                 .foregroundStyle(.white)
                         }
                     }
@@ -66,7 +66,7 @@ struct ArgosyCoupleGameView: View {
                         
                         LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 3), spacing: 0) {
                             ForEach(cards) { card in
-                                CardView(card: card)
+                                ArgosyCardView(card: card)
                                     .onTapGesture {
                                         flipCard(card)
                                         
@@ -75,8 +75,8 @@ struct ArgosyCoupleGameView: View {
                             }
                             
                         }
-                        .frame(width: OxfordgamesDeviceManager.shared.deviceType == .pad ? 500:332)
-                    }.frame(width: OxfordgamesDeviceManager.shared.deviceType == .pad ? 600:382)
+                        .frame(width: ArgosyDeviceManager.shared.deviceType == .pad ? 500:332)
+                    }.frame(width: ArgosyDeviceManager.shared.deviceType == .pad ? 600:382)
                     
                     Spacer()
                 }
@@ -87,11 +87,11 @@ struct ArgosyCoupleGameView: View {
             if gameEnded {
                 if isWin {
                     ZStack {
-                        VStack(spacing: OxfordgamesDeviceManager.shared.deviceType == .pad ? -60:-30) {
+                        VStack(spacing: ArgosyDeviceManager.shared.deviceType == .pad ? -60:-30) {
                             Image(.winTextArgosy)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 500:250)
+                                .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 500:250)
                             
                             Button {
                                 setupGame()
@@ -99,17 +99,17 @@ struct ArgosyCoupleGameView: View {
                                 Image(.getTextArgosy)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 120:60)
+                                    .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 120:60)
                             }
                         }
                     }
                 } else {
                     ZStack {
-                        VStack(spacing: OxfordgamesDeviceManager.shared.deviceType == .pad ? -60:-30) {
+                        VStack(spacing: ArgosyDeviceManager.shared.deviceType == .pad ? -60:-30) {
                             Image(.loseTextArgosy)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 500:250)
+                                .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 500:250)
                             
                             Button {
                                 setupGame()
@@ -117,7 +117,7 @@ struct ArgosyCoupleGameView: View {
                                 Image(.restartBtnArgosy)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 120:60)
+                                    .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 120:60)
                             }
                         }
                     }
@@ -168,12 +168,12 @@ struct ArgosyCoupleGameView: View {
         // Restart timer
         timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
         // Generate cards
-        var gameCards = [Card]()
+        var gameCards = [ArgosyCard]()
         
         // Add 4 cards of each type (24 cards total for 6 types)
         for type in cardTypes {
-            gameCards.append(Card(type: type))
-            gameCards.append(Card(type: type))
+            gameCards.append(ArgosyCard(type: type))
+            gameCards.append(ArgosyCard(type: type))
         }
                 
         // Shuffle cards
@@ -183,7 +183,7 @@ struct ArgosyCoupleGameView: View {
         cards = Array(gameCards.prefix(gridSize * gridSize))
     }
     
-    private func flipCard(_ card: Card) {
+    private func flipCard(_ card: ArgosyCard) {
         guard let index = cards.firstIndex(where: { $0.id == card.id }),
               !cards[index].isFaceUp,
               !cards[index].isMatched,
@@ -253,8 +253,8 @@ struct ArgosyCoupleGameView: View {
     ArgosyCoupleGameView()
 }
 
-struct CardView: View {
-    let card: Card
+struct ArgosyCardView: View {
+    let card: ArgosyCard
 
     var body: some View {
         ZStack {
@@ -262,19 +262,19 @@ struct CardView: View {
                 Image(card.type)
                     .resizable()
                     .scaledToFit()
-                    .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 210:105)
+                    .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 210:105)
             } else {
                 Image(.cardBackArgosy)
                     .resizable()
                     .scaledToFit()
-                    .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 210:105)
+                    .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 210:105)
             }
         }
     }
 }
 
 
-struct Card: Identifiable {
+struct ArgosyCard: Identifiable {
     let id = UUID()
     let type: String
     var isFaceUp = false
