@@ -1,3 +1,11 @@
+//
+//  OxfordgamesSpriteViewContainer.swift
+//  Argosy Online
+//
+//  Created by Dias Atudinov on 19.05.2025.
+//
+
+
 import SwiftUI
 import SpriteKit
 

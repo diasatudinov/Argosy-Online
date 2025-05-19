@@ -1,18 +1,83 @@
-//
-//  ArgosyChooseLevelView.swift
-//  Argosy Online
-//
-//  Created by Dias Atudinov on 19.05.2025.
-//
-
 import SwiftUI
 
 struct ArgosyChooseLevelView: View {
+    @Environment(\.presentationMode) var presentationMode
+    @ObservedObject var shopVM: StoreViewModelSG
+    
+    @State var openGame = false
+    @State var selectedIndex = 0
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack {
+            VStack {
+                HStack {
+                    HStack(alignment: .top) {
+                        Button {
+                            presentationMode.wrappedValue.dismiss()
+                            
+                        } label: {
+                            Image(.backIconArgosy)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 100:50)
+                        }
+                        Spacer()
+                        OxfordgamesCoinBg()
+                    }.padding([.horizontal, .top])
+                }
+                
+                Image(.levelsTextArgosy)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 180:90)
+                
+                
+                Spacer()
+                
+                VStack(spacing: 4) {
+                    
+                    let columns = Array(repeating: GridItem(.flexible(), spacing: 0), count: 3)
+                    LazyVGrid(columns: columns, spacing: 20) {
+                        ForEach(0...9, id: \ .self) { index in
+                            ZStack {
+                                Image(.levelNumBgArgosy)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 150:100)
+                                
+                                Text("\(index + 1)")
+                                    .font(.system(size: OxfordgamesDeviceManager.shared.deviceType == .pad ? 80:40, weight: .bold))
+                                    .foregroundStyle(.white)
+                            }
+                            .onTapGesture {
+                                selectedIndex = index
+                                DispatchQueue.main.async {
+                                    openGame = true
+                                }
+                                
+                            }
+                        }
+                    }.frame(width: OxfordgamesDeviceManager.shared.deviceType == .pad ? 500:340)
+            
+                }
+                Spacer()
+                
+            }
+        }.background(
+            ZStack {
+                Image(.appBgArgosy)
+                    .resizable()
+                    .edgesIgnoringSafeArea(.all)
+                    .scaledToFill()
+            }
+        )
+        .fullScreenCover(isPresented: $openGame) {
+             OxfordgamesGameView(shopVM: shopVM, level: selectedIndex)
+        }
     }
+    
 }
 
+
 #Preview {
-    ArgosyChooseLevelView()
+    ArgosyChooseLevelView(shopVM: StoreViewModelSG())
 }

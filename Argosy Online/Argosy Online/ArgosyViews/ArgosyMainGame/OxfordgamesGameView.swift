@@ -1,3 +1,11 @@
+//
+//  OxfordgamesGameView.swift
+//  Argosy Online
+//
+//  Created by Dias Atudinov on 19.05.2025.
+//
+
+
 import SwiftUI
 import SpriteKit
 
@@ -9,12 +17,11 @@ struct OxfordgamesGameView: View {
         scene.scaleMode = .resizeFill
         return scene
     }()
-    @ObservedObject var shopVM: OxfordgamesStoreViewModel
+    @ObservedObject var shopVM: StoreViewModelSG
     @State private var powerUse = false
     @State private var isWin = false
     @State private var score = 0
     @State var level: Int
-    var imagesForView: [String] = ["viewImage1Oxfordgames","viewImage2Oxfordgames", ""]
     var body: some View {
         ZStack {
             OxfordgamesSpriteViewContainer(scene: gameScene, isWin: $isWin, score: $score, level: level)
@@ -23,28 +30,16 @@ struct OxfordgamesGameView: View {
             VStack(spacing: OxfordgamesDeviceManager.shared.deviceType == .pad ? 200:100) {
                 HStack(spacing: OxfordgamesDeviceManager.shared.deviceType == .pad ? 200:100) {
                     ZStack {
-                        Image(.rectangleMainGameOxfordgames)
+                        Image(.rectangleMainGameArgosy)
                             .resizable()
                             .scaledToFit()
-                        
-                        Image(imagesForView[Int.random(in: Range(0...imagesForView.count - 1))])
-                            .resizable()
-                            .scaledToFit()
-                            .padding()
-                            
-                        
                     }
                     .frame(width: OxfordgamesDeviceManager.shared.deviceType == .pad ? 280:140,height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 400:200)
                     
                     ZStack {
-                        Image(.rectangleMainGameOxfordgames)
+                        Image(.rectangleMainGameArgosy)
                             .resizable()
                             .scaledToFit()
-                        
-                        Image(imagesForView[Int.random(in: Range(0...imagesForView.count - 1))])
-                            .resizable()
-                            .scaledToFit()
-                            .padding()
                             
                         
                     }
@@ -53,28 +48,18 @@ struct OxfordgamesGameView: View {
                 
                 HStack(spacing: OxfordgamesDeviceManager.shared.deviceType == .pad ? 200:100) {
                     ZStack {
-                        Image(.rectangleMainGameOxfordgames)
+                        Image(.rectangleMainGameArgosy)
                             .resizable()
                             .scaledToFit()
-                        
-                        Image(imagesForView[Int.random(in: Range(0...imagesForView.count - 1))])
-                            .resizable()
-                            .scaledToFit()
-                            .padding()
                             
                         
                     }
                     .frame(width: OxfordgamesDeviceManager.shared.deviceType == .pad ? 280: 140,height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 400:200)
                     
                     ZStack {
-                        Image(.rectangleMainGameOxfordgames)
+                        Image(.rectangleMainGameArgosy)
                             .resizable()
                             .scaledToFit()
-                        
-                        Image(imagesForView[Int.random(in: Range(0...imagesForView.count - 1))])
-                            .resizable()
-                            .scaledToFit()
-                            .padding()
                             
                         
                     }
@@ -89,24 +74,24 @@ struct OxfordgamesGameView: View {
                             presentationMode.wrappedValue.dismiss()
                             
                         } label: {
-                            Image(.backIconOxfordgames)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 100:50)
-                        }
-                        
-                        Button {
-                            gameScene.restartLevel()
-                            isWin = false
-                        } label: {
-                            Image(.restartBtnOxfordgames)
+                            Image(.backIconArgosy)
                                 .resizable()
                                 .scaledToFit()
                                 .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 100:50)
                         }
                         Spacer()
+                        Button {
+                            gameScene.restartLevel()
+                            isWin = false
+                        } label: {
+                            Image(.restartGameBtnArgosy)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 100:50)
+                        }
                         
-                        OxfordgamesCoinBg()
+                        
+                       
                        
                     }.padding([.horizontal, .top])
                 }
@@ -116,35 +101,35 @@ struct OxfordgamesGameView: View {
             
             if isWin {
                 ZStack {
-                    Image(.winBgOxfordgames)
-                        .resizable()
-                        .scaledToFit()
                     
+                    Color.black.opacity(0.5).ignoresSafeArea()
                     VStack {
                         
-                        Spacer()
-                        
+                        Image(.winBgArgosy)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 400:223)
                         Button {
                             gameScene.restartLevel()
                             isWin = false
                         } label: {
-                            Image(.retryBtnOxfordgames)
+                            Image(.nextLvlBtnArgosy)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 120:60)
+                                .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 200:105)
                         }
                         
                         Button {
                             presentationMode.wrappedValue.dismiss()
                         } label: {
-                            Image(.menuBtnOxfordgames)
+                            Image(.backBtnGreenArgosy)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 120:60)
+                                .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 200:105)
                         }
                         
                     }.padding(.bottom, OxfordgamesDeviceManager.shared.deviceType == .pad ? 100 : 50)
-                }.frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 700:350)
+                }
             }
             
         }.background(
@@ -161,5 +146,5 @@ struct OxfordgamesGameView: View {
 }
 
 #Preview {
-    OxfordgamesGameView(shopVM: OxfordgamesStoreViewModel(), level: 0)
+    OxfordgamesGameView(shopVM: StoreViewModelSG(), level: 0)
 }

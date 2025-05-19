@@ -1,3 +1,11 @@
+//
+//  OxfordgamesMovementType.swift
+//  Argosy Online
+//
+//  Created by Dias Atudinov on 19.05.2025.
+//
+
+
 import SpriteKit
 import SwiftUI
 
@@ -16,7 +24,7 @@ struct OxfordgamesShipConfig {
 }
 
 class OxfordgamesGameScene: SKScene, SKPhysicsContactDelegate {
-    var shopVM = OxfordgamesStoreViewModel()
+    var shopVM = StoreViewModelSG()
     var levelIndex: Int?
     private var lastTappedShip: SKSpriteNode?
     private var shipArrows: [SKSpriteNode: SKSpriteNode] = [:]
@@ -170,7 +178,7 @@ class OxfordgamesGameScene: SKScene, SKPhysicsContactDelegate {
         guard let item = shopVM.currentPersonItem else { return }
         for shipConfig in shipConfigs {
             let ship = SKSpriteNode(imageNamed: item.image)
-            ship.size = CGSize(width: OxfordgamesDeviceManager.shared.deviceType == .pad ? 120:60, height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 120:60)
+            ship.size = CGSize(width: OxfordgamesDeviceManager.shared.deviceType == .pad ? 350:175, height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 130:65)
             ship.position = shipConfig.initialPosition
             ship.name = shipConfig.name
             ship.zRotation = atan2(shipConfig.direction.dy, shipConfig.direction.dx)
@@ -189,13 +197,13 @@ class OxfordgamesGameScene: SKScene, SKPhysicsContactDelegate {
             let arrowTextureName: String
             switch shipConfig.movement {
             case .straight:
-                arrowTextureName = "arrowOxfordgames"
+                arrowTextureName = "arrowArgosy"
             case .turnLeft:
-                arrowTextureName = "arrowLeftOxfordgames"
+                arrowTextureName = "arrowLeftArgosy"
             case .turnRight:
-                arrowTextureName = "arrowRightOxfordgames"
+                arrowTextureName = "arrowRightArgosy"
             case .uTurn:
-                arrowTextureName = "arrowBackOxfordgames"
+                arrowTextureName = "arrowRightArgosy"
             }
             
             let arrow = SKSpriteNode(imageNamed: arrowTextureName)
@@ -307,5 +315,5 @@ class OxfordgamesGameScene: SKScene, SKPhysicsContactDelegate {
 }
 
 #Preview {
-    OxfordgamesGameView(shopVM: OxfordgamesStoreViewModel(), level: 0)
+    OxfordgamesGameView(shopVM: StoreViewModelSG(), level: 0)
 }
