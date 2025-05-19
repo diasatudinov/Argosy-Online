@@ -3,7 +3,7 @@ import SpriteKit
 
 
 struct ArgosyMazeViewContainer: UIViewRepresentable {
-    @StateObject var user = OxfordgamesUser.shared
+    @StateObject var user = ArgosyUser.shared
     var scene: ArgosyMazeScene
     @Binding var isWin: Bool
     func makeUIView(context: Context) -> SKView {

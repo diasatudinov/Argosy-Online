@@ -4,8 +4,8 @@ import SpriteKit
 struct ArgosyMazeGameView: View {
     @Environment(\.presentationMode) var presentationMode
     @State var isWin = false
-    @State private var gameScene: OxfordgamesMazeScene = {
-        let scene = OxfordgamesMazeScene(size: UIScreen.main.bounds.size)
+    @State private var gameScene: ArgosyMazeScene = {
+        let scene = ArgosyMazeScene(size: UIScreen.main.bounds.size)
         scene.scaleMode = .resizeFill
         return scene
     }()
@@ -18,12 +18,12 @@ struct ArgosyMazeGameView: View {
                 Image(.guessTheNumTextArgosy)
                     .resizable()
                     .scaledToFit()
-                    .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 210:105)
+                    .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 210:105)
                 Image(.guessNumGameBgArgosy)
                     .resizable()
                     .scaledToFit()
             }
-            OxfordgamesMazeViewContainer(scene: gameScene, isWin: $isWin)
+            ArgosyMazeViewContainer(scene: gameScene, isWin: $isWin)
                 
             
             VStack {
@@ -36,12 +36,12 @@ struct ArgosyMazeGameView: View {
                             Image(.backIconArgosy)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 100:50)
+                                .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 100:50)
                         }
                         
                         Spacer()
                         
-                        OxfordgamesCoinBg()
+                        ArgosyCoinBg()
 
                     }.padding([.horizontal, .top])
                 }
@@ -56,16 +56,16 @@ struct ArgosyMazeGameView: View {
                         Image(.controlArrowArgosy)
                             .resizable()
                             .scaledToFit()
-                            .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 100:50)
+                            .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 100:50)
                     }
-                    HStack(spacing: OxfordgamesDeviceManager.shared.deviceType == .pad ? 100:50) {
+                    HStack(spacing: ArgosyDeviceManager.shared.deviceType == .pad ? 100:50) {
                         Button {
                             gameScene.moveLeft()
                         } label: {
                             Image(.controlArrowArgosy)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 100:50)
+                                .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 100:50)
                                 .rotationEffect(.degrees(90))
                                 .scaleEffect(x: -1, y: 1)
                         }
@@ -76,7 +76,7 @@ struct ArgosyMazeGameView: View {
                             Image(.controlArrowArgosy)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 100:50)
+                                .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 100:50)
                                 .rotationEffect(.degrees(90))
                         }
                     }
@@ -87,7 +87,7 @@ struct ArgosyMazeGameView: View {
                         Image(.controlArrowArgosy)
                             .resizable()
                             .scaledToFit()
-                            .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 100:50)
+                            .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 100:50)
                             .scaleEffect(x: 1, y: -1)
                     }
                 }.padding(.bottom, 50)
@@ -97,11 +97,11 @@ struct ArgosyMazeGameView: View {
             
             if isWin {
                 ZStack {
-                    VStack(spacing: OxfordgamesDeviceManager.shared.deviceType == .pad ? -60:-30) {
+                    VStack(spacing: ArgosyDeviceManager.shared.deviceType == .pad ? -60:-30) {
                         Image(.winTextArgosy)
                             .resizable()
                             .scaledToFit()
-                            .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 500:250)
+                            .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 500:250)
                         
                         Button {
                             gameScene.restartGame()
@@ -110,7 +110,7 @@ struct ArgosyMazeGameView: View {
                             Image(.getTextArgosy)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 120:60)
+                                .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 120:60)
                         }
                     }
                 }

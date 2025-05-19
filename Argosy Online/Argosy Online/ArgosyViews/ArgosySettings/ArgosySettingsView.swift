@@ -3,7 +3,7 @@ import SwiftUI
 struct ArgosySettingsView: View {
     @Environment(\.presentationMode) var presentationMode
 
-    @ObservedObject var settingsVM: OxfordgamesSettingsViewModel
+    @ObservedObject var settingsVM: ArgosySettingsViewModel
     var body: some View {
         ZStack {
             
@@ -26,7 +26,7 @@ struct ArgosySettingsView: View {
                             Image(settingsVM.soundEnabled ? .soundOnArgosy:.soundOffArgosy)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(width: OxfordgamesDeviceManager.shared.deviceType == .pad ? 200:100, height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 140:70)
+                                .frame(width: ArgosyDeviceManager.shared.deviceType == .pad ? 200:100, height: ArgosyDeviceManager.shared.deviceType == .pad ? 140:70)
                         }
                         
                         
@@ -39,14 +39,14 @@ struct ArgosySettingsView: View {
                             Image(settingsVM.musicEnabled ? .musicOnArgosy:.musicOffArgosy)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(width: OxfordgamesDeviceManager.shared.deviceType == .pad ? 200:100,height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 140:70)
+                                .frame(width: ArgosyDeviceManager.shared.deviceType == .pad ? 200:100,height: ArgosyDeviceManager.shared.deviceType == .pad ? 140:70)
                         }
                         
                         
                     }
                     
                     
-                }.frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 342:171)
+                }.frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 342:171)
             }
             VStack {
                 HStack {
@@ -58,18 +58,18 @@ struct ArgosySettingsView: View {
                             Image(.backIconArgosy)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 100:50)
+                                .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 100:50)
                         }
                         Spacer()
                        
-                        OxfordgamesCoinBg()
+                        ArgosyCoinBg()
                     }.padding([.horizontal, .top])
                 }.padding(.bottom, 40)
                 
                 Image(.settingsTextArgosy)
                     .resizable()
                     .scaledToFit()
-                    .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 210:105)
+                    .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 210:105)
                 Spacer()
             }
         }.background(
@@ -85,5 +85,5 @@ struct ArgosySettingsView: View {
 }
 
 #Preview {
-    ArgosySettingsView(settingsVM: OxfordgamesSettingsViewModel())
+    ArgosySettingsView(settingsVM: ArgosySettingsViewModel())
 }

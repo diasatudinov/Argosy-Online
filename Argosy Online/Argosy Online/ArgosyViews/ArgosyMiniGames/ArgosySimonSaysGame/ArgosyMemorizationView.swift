@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ArgosyMemorizationView: View {
-    @StateObject var user = OxfordgamesUser.shared
+    @StateObject var user = ArgosyUser.shared
     @Environment(\.presentationMode) var presentationMode
     
     let cardImages = ["cardFace1Argosy", "cardFace2Argosy", "cardFace3Argosy", "cardFace4Argosy", "cardFace5Argosy", "cardFace6Argosy"]
@@ -33,13 +33,13 @@ struct ArgosyMemorizationView: View {
                                     Image(.backIconArgosy)
                                         .resizable()
                                         .scaledToFit()
-                                        .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 100:50)
+                                        .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 100:50)
                                 }
                                 
                             }
                             Spacer()
                             
-                            OxfordgamesCoinBg()
+                            ArgosyCoinBg()
                         }.padding([.horizontal, .top])
                     }
                 }
@@ -47,7 +47,7 @@ struct ArgosyMemorizationView: View {
                 Image(.simonSaysGameTextArgosy)
                     .resizable()
                     .scaledToFit()
-                    .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 210:105)
+                    .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 210:105)
                 
                 Spacer()
                 
@@ -55,7 +55,7 @@ struct ArgosyMemorizationView: View {
                     // Full-screen reveal of each card in sequence
                     if let idx = currentStep {
                         MemorizationCardView(imageName: cardImages[idx])
-                            .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 600:300)
+                            .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 600:300)
                             .padding()
                             .transition(.opacity)
                     }
@@ -81,11 +81,11 @@ struct ArgosyMemorizationView: View {
                 
                 if userInputIndex >= sequenceLength {
                     ZStack {
-                        VStack(spacing: OxfordgamesDeviceManager.shared.deviceType == .pad ? -60:-30) {
+                        VStack(spacing: ArgosyDeviceManager.shared.deviceType == .pad ? -60:-30) {
                             Image(.winTextArgosy)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 500:250)
+                                .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 500:250)
                             
                             Button {
                                 startGame()
@@ -93,17 +93,17 @@ struct ArgosyMemorizationView: View {
                                 Image(.getTextArgosy)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 120:60)
+                                    .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 120:60)
                             }
                         }
                     }
                 } else {
                     ZStack {
-                        VStack(spacing: OxfordgamesDeviceManager.shared.deviceType == .pad ? -60:-30) {
+                        VStack(spacing: ArgosyDeviceManager.shared.deviceType == .pad ? -60:-30) {
                             Image(.loseTextArgosy)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 500:250)
+                                .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 500:250)
                             
                             Button {
                                 startGame()
@@ -111,7 +111,7 @@ struct ArgosyMemorizationView: View {
                                 Image(.restartBtnArgosy)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 120:60)
+                                    .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 120:60)
                             }
                         }
                     }

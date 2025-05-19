@@ -3,7 +3,7 @@ import SwiftUI
 
 struct ArgosyShopView: View {
     @Environment(\.presentationMode) var presentationMode
-    @StateObject var user = OxfordgamesUser.shared
+    @StateObject var user = ArgosyUser.shared
     @State var section: ArgosyStoreSection = .skin
     @ObservedObject var viewModel: ArgosyShopViewModel
     @State var skinIndex: Int = 0
@@ -12,8 +12,6 @@ struct ArgosyShopView: View {
         ZStack {
             VStack {
                 ZStack {
-                    HStack {
-                    }
                     
                     HStack {
                         HStack(alignment: .top) {
@@ -24,12 +22,12 @@ struct ArgosyShopView: View {
                                 Image(.backIconArgosy)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 100:50)
+                                    .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 100:50)
                             }
                             
                             Spacer()
                             
-                            OxfordgamesCoinBg()
+                            ArgosyCoinBg()
                             
                         }.padding([.horizontal])
                     }
@@ -38,8 +36,9 @@ struct ArgosyShopView: View {
                 Image(.shopTextArgosy)
                     .resizable()
                     .scaledToFit()
-                    .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 150:75)
+                    .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 150:75)
                 
+                Spacer()
                 ZStack {
                     Image(.skinBgArgosy)
                         .resizable()
@@ -54,7 +53,7 @@ struct ArgosyShopView: View {
                             Image(.arrowShopArgosy)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 100:50)
+                                .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 100:50)
                                 .scaleEffect(x: -1,y: 1)
                         }
                         Spacer()
@@ -71,11 +70,11 @@ struct ArgosyShopView: View {
                             Image(.arrowShopArgosy)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 100:50)
+                                .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 100:50)
                             
                         }
                     }.offset(y: 40)
-                }.frame(width: OxfordgamesDeviceManager.shared.deviceType == .pad ? 640:320, height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 580:290)
+                }.frame(width: ArgosyDeviceManager.shared.deviceType == .pad ? 500:250, height: ArgosyDeviceManager.shared.deviceType == .pad ? 450:250)
                 
                 ZStack {
                     Image(.backBgArgosy)
@@ -91,15 +90,15 @@ struct ArgosyShopView: View {
                             Image(.arrowShopArgosy)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 100:50)
+                                .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 100:50)
                                 .scaleEffect(x: -1,y: 1)
                         }
                         
-                        Spacer()
+                      
                         
                         achievementItem(item: viewModel.shopTeamItems.filter({ $0.section == .backgrounds })[backIndex])
                         
-                        Spacer()
+                     
                         
                         Button {
                             if backIndex < viewModel.shopTeamItems.filter({ $0.section == .backgrounds }).count - 1 {
@@ -109,11 +108,13 @@ struct ArgosyShopView: View {
                             Image(.arrowShopArgosy)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 100:50)
+                                .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 100:50)
                         }
-                    }.offset(y: OxfordgamesDeviceManager.shared.deviceType == .pad ? 50:40)
+                    }.offset(y: ArgosyDeviceManager.shared.deviceType == .pad ? 50:40)
                     
-                }.frame(width: OxfordgamesDeviceManager.shared.deviceType == .pad ? 640:320, height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 580:290)
+                }.frame(width: ArgosyDeviceManager.shared.deviceType == .pad ? 500:250, height: ArgosyDeviceManager.shared.deviceType == .pad ? 450:250)
+                
+                Spacer()
             }
         }.background(
             ZStack {
@@ -132,7 +133,7 @@ struct ArgosyShopView: View {
             Image(item.icon)
                 .resizable()
                 .scaledToFit()
-                .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 280:140)
+                .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 250:120)
             
             if item.section == .skin {
                 if viewModel.boughtItems.contains(where: { $0.name == item.name }) {
@@ -144,7 +145,7 @@ struct ArgosyShopView: View {
                                 Image(.arrowShopArgosy)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 100:50)
+                                    .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 100:50)
                                     .rotationEffect(.degrees(90))
                             }
                             
@@ -152,12 +153,11 @@ struct ArgosyShopView: View {
                     }
                 } else {
                     VStack {
-                        Spacer()
                         ZStack {
                             Image(.priceArgosy)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 100:50)
+                                .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 100:50)
                             
                             
                         }
@@ -166,13 +166,14 @@ struct ArgosyShopView: View {
             } else {
                 if viewModel.boughtItems.contains(where: { $0.name == item.name }) {
                     VStack {
+                        Spacer()
                         ZStack {
                             
                             if let currentItem = viewModel.currentBgItem, currentItem.name == item.name {
                                 Image(.arrowShopArgosy)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 100:50)
+                                    .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 100:50)
                                     .rotationEffect(.degrees(90))
                             }
                             
@@ -184,7 +185,7 @@ struct ArgosyShopView: View {
                             Image(.priceArgosy)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 100:50)
+                                .frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 100:50)
                             
                             
                         }
@@ -192,7 +193,7 @@ struct ArgosyShopView: View {
                 }
             }
             
-        }.frame(height: OxfordgamesDeviceManager.shared.deviceType == .pad ? 414:207)
+        }.frame(height: ArgosyDeviceManager.shared.deviceType == .pad ? 314:150)
             .onTapGesture {
                 if item.section == .skin {
                     if viewModel.boughtItems.contains(where: { $0.name == item.name }) {
