@@ -1,16 +1,8 @@
-//
-//  OxfordgamesSpriteViewContainer.swift
-//  Argosy Online
-//
-//  Created by Dias Atudinov on 19.05.2025.
-//
-
-
 import SwiftUI
 import SpriteKit
 
 
-struct OxfordgamesSpriteViewContainer: UIViewRepresentable {
+struct ArgosySpriteViewContainer: UIViewRepresentable {
     @StateObject var user = OxfordgamesUser.shared
     var scene: OxfordgamesGameScene
     @Binding var isWin: Bool

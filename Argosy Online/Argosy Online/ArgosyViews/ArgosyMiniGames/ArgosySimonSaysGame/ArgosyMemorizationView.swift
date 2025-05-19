@@ -1,14 +1,6 @@
-//
-//  OxfordgamesMemorizationView.swift
-//  Argosy Online
-//
-//  Created by Dias Atudinov on 16.05.2025.
-//
-
-
 import SwiftUI
 
-struct OxfordgamesMemorizationView: View {
+struct ArgosyMemorizationView: View {
     @StateObject var user = OxfordgamesUser.shared
     @Environment(\.presentationMode) var presentationMode
     
@@ -204,5 +196,5 @@ struct MemorizationCardView: View {
 }
 
 #Preview {
-    OxfordgamesMemorizationView()
+    ArgosyMemorizationView()
 }

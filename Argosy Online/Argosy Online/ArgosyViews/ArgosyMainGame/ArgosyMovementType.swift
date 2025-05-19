@@ -1,15 +1,7 @@
-//
-//  OxfordgamesMovementType.swift
-//  Argosy Online
-//
-//  Created by Dias Atudinov on 19.05.2025.
-//
-
-
 import SpriteKit
 import SwiftUI
 
-enum OxfordgamesMovementType: Int {
+enum ArgosyMovementType: Int {
     case straight = 0
     case turnLeft = 1
     case turnRight = 2
@@ -20,11 +12,11 @@ struct OxfordgamesShipConfig {
     let name: String
     let initialPosition: CGPoint
     let direction: CGVector
-    let movement: OxfordgamesMovementType
+    let movement: ArgosyMovementType
 }
 
 class OxfordgamesGameScene: SKScene, SKPhysicsContactDelegate {
-    var shopVM = StoreViewModelSG()
+    var shopVM = ArgosyShopViewModel()
     var levelIndex: Int?
     private var lastTappedShip: SKSpriteNode?
     private var shipArrows: [SKSpriteNode: SKSpriteNode] = [:]
@@ -243,7 +235,7 @@ class OxfordgamesGameScene: SKScene, SKPhysicsContactDelegate {
         guard let dVal = ship.userData?["direction"] as? NSValue,
               let tVal = ship.userData?["movementType"] as? NSNumber else { return }
         let dir = dVal.cgVectorValue
-        let type = OxfordgamesMovementType(rawValue: tVal.intValue) ?? .straight
+        let type = ArgosyMovementType(rawValue: tVal.intValue) ?? .straight
         let off: CGFloat = 2000
         var actions: [SKAction] = []
         
@@ -315,5 +307,5 @@ class OxfordgamesGameScene: SKScene, SKPhysicsContactDelegate {
 }
 
 #Preview {
-    OxfordgamesGameView(shopVM: StoreViewModelSG(), level: 0)
+    OxfordgamesGameView(shopVM: ArgosyShopViewModel(), level: 0)
 }

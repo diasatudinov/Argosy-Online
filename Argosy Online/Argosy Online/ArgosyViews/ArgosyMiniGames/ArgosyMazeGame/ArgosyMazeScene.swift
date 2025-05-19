@@ -1,15 +1,7 @@
-//
-//  OxfordgamesMazeScene.swift
-//  Argosy Online
-//
-//  Created by Dias Atudinov on 16.05.2025.
-//
-
-
 import SpriteKit
 import UIKit
 
-class OxfordgamesMazeScene: SKScene {
+class ArgosyMazeScene: SKScene {
 
     private var maze: [[Int]] = []
     private let rows = 15

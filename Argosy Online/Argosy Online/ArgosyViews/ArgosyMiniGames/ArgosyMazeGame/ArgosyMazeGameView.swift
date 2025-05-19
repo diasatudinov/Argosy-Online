@@ -1,15 +1,7 @@
-//
-//  OxfordgamesMazeGameView.swift
-//  Argosy Online
-//
-//  Created by Dias Atudinov on 16.05.2025.
-//
-
-
 import SwiftUI
 import SpriteKit
 
-struct OxfordgamesMazeGameView: View {
+struct ArgosyMazeGameView: View {
     @Environment(\.presentationMode) var presentationMode
     @State var isWin = false
     @State private var gameScene: OxfordgamesMazeScene = {
@@ -136,5 +128,5 @@ struct OxfordgamesMazeGameView: View {
 }
 
 #Preview {
-    OxfordgamesMazeGameView()
+    ArgosyMazeGameView()
 }

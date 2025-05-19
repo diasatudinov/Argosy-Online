@@ -1,7 +1,7 @@
 import SwiftUI
 import AVFoundation
 
-struct CoupleGameView: View {
+struct ArgosyCoupleGameView: View {
     @Environment(\.presentationMode) var presentationMode
 
     @StateObject var user = OxfordgamesUser.shared
@@ -250,7 +250,7 @@ struct CoupleGameView: View {
 }
 
 #Preview {
-    CoupleGameView()
+    ArgosyCoupleGameView()
 }
 
 struct CardView: View {

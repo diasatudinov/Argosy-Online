@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct OxfordgamesNumberGuessGame: View {
+struct ArgosyNumberGuessGame: View {
     @Environment(\.presentationMode) var presentationMode
     @State private var target = Int.random(in: 100...999)
     @State private var guessDigits: [String] = []
@@ -175,5 +175,5 @@ struct OxfordgamesNumberGuessGame: View {
 }
 
 #Preview {
-    OxfordgamesNumberGuessGame()
+    ArgosyNumberGuessGame()
 }

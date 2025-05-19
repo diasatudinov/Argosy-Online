@@ -1,7 +1,7 @@
 import UIKit
 
-class OxfordgamesDeviceManager {
-    static let shared = OxfordgamesDeviceManager()
+class ArgosyDeviceManager {
+    static let shared = ArgosyDeviceManager()
     
     var deviceType: UIUserInterfaceIdiom
     

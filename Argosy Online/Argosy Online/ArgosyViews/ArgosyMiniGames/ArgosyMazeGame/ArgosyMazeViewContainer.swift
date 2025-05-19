@@ -1,18 +1,10 @@
-//
-//  OxfordgamesMazeViewContainer.swift
-//  Argosy Online
-//
-//  Created by Dias Atudinov on 16.05.2025.
-//
-
-
 import SwiftUI
 import SpriteKit
 
 
-struct OxfordgamesMazeViewContainer: UIViewRepresentable {
+struct ArgosyMazeViewContainer: UIViewRepresentable {
     @StateObject var user = OxfordgamesUser.shared
-    var scene: OxfordgamesMazeScene
+    var scene: ArgosyMazeScene
     @Binding var isWin: Bool
     func makeUIView(context: Context) -> SKView {
         let skView = SKView(frame: UIScreen.main.bounds)

@@ -1,30 +1,22 @@
-//
-//  OxfordgamesGameView.swift
-//  Argosy Online
-//
-//  Created by Dias Atudinov on 19.05.2025.
-//
-
-
 import SwiftUI
 import SpriteKit
 
-struct OxfordgamesGameView: View {
+struct ArgosyGameView: View {
     @Environment(\.presentationMode) var presentationMode
    
-    @State var gameScene: OxfordgamesGameScene = {
-        let scene = OxfordgamesGameScene(size: UIScreen.main.bounds.size)
+    @State var gameScene: ArgosyGameScene = {
+        let scene = ArgosyGameScene(size: UIScreen.main.bounds.size)
         scene.scaleMode = .resizeFill
         return scene
     }()
-    @ObservedObject var shopVM: StoreViewModelSG
+    @ObservedObject var shopVM: ArgosyShopViewModel
     @State private var powerUse = false
     @State private var isWin = false
     @State private var score = 0
     @State var level: Int
     var body: some View {
         ZStack {
-            OxfordgamesSpriteViewContainer(scene: gameScene, isWin: $isWin, score: $score, level: level)
+            ArgosySpriteViewContainer(scene: gameScene, isWin: $isWin, score: $score, level: level)
                 .ignoresSafeArea()
             
             VStack(spacing: OxfordgamesDeviceManager.shared.deviceType == .pad ? 200:100) {
@@ -146,5 +138,5 @@ struct OxfordgamesGameView: View {
 }
 
 #Preview {
-    OxfordgamesGameView(shopVM: StoreViewModelSG(), level: 0)
+    ArgosyGameView(shopVM: ArgosyShopViewModel(), level: 0)
 }

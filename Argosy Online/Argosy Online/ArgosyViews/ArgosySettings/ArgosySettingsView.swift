@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct OxfordgamesSettingsView: View {
+struct ArgosySettingsView: View {
     @Environment(\.presentationMode) var presentationMode
 
     @ObservedObject var settingsVM: OxfordgamesSettingsViewModel
@@ -85,5 +85,5 @@ struct OxfordgamesSettingsView: View {
 }
 
 #Preview {
-    OxfordgamesSettingsView(settingsVM: OxfordgamesSettingsViewModel())
+    ArgosySettingsView(settingsVM: OxfordgamesSettingsViewModel())
 }

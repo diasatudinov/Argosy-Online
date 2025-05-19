@@ -1,19 +1,11 @@
-//
-//  StoreSection.swift
-//  Argosy Online
-//
-//  Created by Dias Atudinov on 15.05.2025.
-//
-
-
 import SwiftUI
 
-enum StoreSection: Codable, Hashable {
+enum ArgosyStoreSection: Codable, Hashable {
     case backgrounds
     case skin
 }
 
-class StoreViewModelSG: ObservableObject {
+class ArgosyShopViewModel: ObservableObject {
     @Published var shopTeamItems: [Item] = [
         
         Item(name: "bg1", image: "gameBg1Argosy", icon: "backIcon1Argosy", section: .backgrounds, price: 100),
@@ -120,6 +112,6 @@ struct Item: Codable, Hashable {
     var name: String
     var image: String
     var icon: String
-    var section: StoreSection
+    var section: ArgosyStoreSection
     var price: Int
 }

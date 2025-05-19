@@ -1,19 +1,11 @@
-//
-//  ShopViewSG.swift
-//  Argosy Online
-//
-//  Created by Dias Atudinov on 15.05.2025.
-//
-
-
 import SwiftUI
 
 
-struct ShopViewSG: View {
+struct ArgosyShopView: View {
     @Environment(\.presentationMode) var presentationMode
     @StateObject var user = OxfordgamesUser.shared
-    @State var section: StoreSection = .skin
-    @ObservedObject var viewModel: StoreViewModelSG
+    @State var section: ArgosyStoreSection = .skin
+    @ObservedObject var viewModel: ArgosyShopViewModel
     @State var skinIndex: Int = 0
     @State var backIndex: Int = 0
     var body: some View {
@@ -236,5 +228,5 @@ struct ShopViewSG: View {
 
 
 #Preview {
-    ShopViewSG(viewModel: StoreViewModelSG())
+    ArgosyShopView(viewModel: ArgosyShopViewModel())
 }

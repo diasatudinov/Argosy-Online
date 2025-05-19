@@ -1,8 +1,8 @@
 import SwiftUI
 
-struct AchievementsViewSG: View {
+struct ArgosyAchievementsView: View {
     @Environment(\.presentationMode) var presentationMode
-    @ObservedObject var viewModel: AchievementsViewModelSG
+    @ObservedObject var viewModel: ArgosyAchievementsViewModel
     var body: some View {
         ZStack {
             
@@ -122,5 +122,5 @@ struct AchievementsViewSG: View {
 }
 
 #Preview {
-    AchievementsViewSG(viewModel: AchievementsViewModelSG())
+    ArgosyAchievementsView(viewModel: ArgosyAchievementsViewModel())
 }
